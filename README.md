@@ -167,9 +167,8 @@ const nestedPoint = new Map({
 define('2-nested point', keys('nested nested point', {
   x: keys('nested point', {x: getSpec('point')}),
 }));
-explain(nestedPoint, '2-nested point');
-// key x->key x->key x->is a number?: hi failed specification.
-// key x->key x->key y->is a number?: undefined failed specification.
+isValid(nestedPoint, '2-nested point'); // true
+
 
 // A good way to capture the same behavior is via the immutable from JS method.
 const nestedPoint2 = fromJS({
@@ -181,7 +180,8 @@ const nestedPoint2 = fromJS({
   },
 });
 
-isValid(nestedPoint2, '2-nested point'); // false
+
+isValid(nestedPoint2, '2-nested point'); // true
 
 // This works with normal JS Maps as well.
 const nestedPoint3 = {
