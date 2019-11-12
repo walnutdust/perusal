@@ -216,6 +216,7 @@ console.log(
 );
 /* Test 1: Time taken to perform 10000000 validity checks on the JS Map is 5441.707319021225ms, averaging 0.0005441707319021225ms. */
 
+// This uses perusal-immutable
 // Test 2: fromJS (immutableJS) Map
 start = performance.now();
 for (let i = 0; i < numTimes; i++) {
@@ -233,6 +234,7 @@ console.log(
 );
 /* Test 2: Test 2: Time taken to perform 10000000 validity checks on the fromJS Map is 1474.4121170043945ms, averaging 0.00014744121170043946ms. */
 
+// This uses perusal-immutable
 // Test 3: immutableJS Map
 start = performance.now();
 for (let i = 0; i < numTimes; i++) {
@@ -287,7 +289,7 @@ For comparison purposes, clojure's `spec/alpha` (which inspired this library) gi
 1. The developer team is able to be fully certain that the data flow within the program is as intended - in this case, there is no need to install `perusal` to verify the data.
 2. The program requires high level of optimization and speed - `perusal` comes with performance costs since it has to check the type
 
-In general, `perusal` is good for when we want to assert that the input data fulfills a certain structure before we perform further processing (e.g. sending it out to another API, data processing). With the immutable version, users do not have to worry about costs associated with repeated checking of data that is handled between functions, since the metadata will be stored if the same data is used.
+In general, `perusal` is good for when we want to assert that the input data fulfills a certain structure before we perform further processing (e.g. sending it out to another API, data processing). With the immutable version (`perusal immutable`), users do not have to worry about costs associated with repeated checking of data that is handled between functions, since the metadata will be stored if the same data is used.
 
 ## Are there alternatives?
 
