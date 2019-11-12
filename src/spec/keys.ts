@@ -51,7 +51,7 @@ class Keys extends Spec {
     let result = true;
     for (let key in this.options) {
       const spec = this.options[key];
-      if (spec.explain(value.get(key), path.concat([`key ${key}`])) === false) {
+      if (!value.get || spec.explain(value.get(key), path.concat([`key ${key}`])) === false) {
         result = false;
       }
     }

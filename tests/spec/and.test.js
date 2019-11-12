@@ -1,7 +1,7 @@
 import {expect} from 'chai';
-import {and, Spec, assert} from '../../src/utils';
-import {even, odd, isNumber} from '../../src/preds';
-import {invalid} from '../../src/control';
+import {and, Spec, assert} from '../../lib/utils';
+import {even, odd, isNumber} from '../../lib/preds';
+import {invalid} from '../../lib/control';
 import {suspendConsole, restoreConsole} from '../testing-utils';
 
 describe('and', function() {
