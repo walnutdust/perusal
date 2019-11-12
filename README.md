@@ -169,6 +169,7 @@ define('2-nested point', keys('nested nested point', {
 }));
 isValid(nestedPoint, '2-nested point'); // true
 
+
 // A good way to capture the same behavior is via the immutable from JS method.
 const nestedPoint2 = fromJS({
   x: {
@@ -178,6 +179,7 @@ const nestedPoint2 = fromJS({
     },
   },
 });
+
 
 isValid(nestedPoint2, '2-nested point'); // true
 
