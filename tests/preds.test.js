@@ -9,9 +9,9 @@ import {
   isObject,
   isBool,
   isSymbol,
-  isFn
-} from '../src/preds';
-import {isValid} from '../src/utils';
+  isFn,
+} from '../lib/preds';
+import {isValid} from '../lib/utils';
 import {expect} from 'chai';
 import {suspendConsole, restoreConsole} from './testing-utils';
 
