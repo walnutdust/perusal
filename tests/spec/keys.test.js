@@ -1,8 +1,7 @@
 import {expect} from 'chai';
-import {keys, Spec, assert} from '../../lib/utils';
-import {even} from '../../lib/preds';
-import {invalid} from '../../lib/control';
-import {Map} from 'immutable';
+import {keys, Spec, assert} from '../../cjs/utils';
+import {even} from '../../cjs/preds';
+import {invalid} from '../../cjs/control';
 import {suspendConsole, restoreConsole} from '../testing-utils';
 
 describe('keys', function() {
@@ -29,8 +28,8 @@ describe('keys', function() {
 
   describe('assert', function() {
     it('returns the value if value passes', function() {
-      const testMap = new Map({x: 12});
-      expect(assert(testMap, keys('name', {x: even})).value).to.eq(testMap.value);
+      const testMap = {x: 12};
+      expect(assert(testMap, keys('name', {x: even}))).to.eq(testMap);
     });
 
     it('returns invalid if value fails', function() {
@@ -40,7 +39,7 @@ describe('keys', function() {
 
   describe('explain', function() {
     it('returns true and logs nothing if correct', function() {
-      expect(keys('name', {x: even}).explain(new Map({x: 12}), [])).to.eq(true);
+      expect(keys('name', {x: even}).explain({x: 12}, [])).to.eq(true);
     });
 
     it('returns false and logs error if spec fails', function() {

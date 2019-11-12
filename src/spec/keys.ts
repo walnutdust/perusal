@@ -1,10 +1,8 @@
 import Spec from './spec';
 import {invalid} from '../control';
-import {Map} from 'immutable';
-import {addToSpecs} from './util/addToSpecs';
 import invariant from 'tiny-invariant';
 
-/** @module specjs/spec */
+/** @module perusal/spec */
 
 /**
  * Class representing `Keys` specs, which requires that given an immutable map,
@@ -14,11 +12,11 @@ import invariant from 'tiny-invariant';
 class Keys extends Spec {
   /**
    * Asserts this spec on a given value. Returns the value if value passes spec,
-   * returns `specjs.invalid` otherwise.
+   * returns `perusal.invalid` otherwise.
    *
    * @param {any} value - The value to be asserted.
    * @return {invalid|any} Returns the value if value passes spec, returns
-   * specjs.invalid otherwise.
+   * perusal.invalid otherwise.
    */
   assert(value: any) {
     if (value.specs && value.specs[this.name] !== undefined) return value.specs[this.name];
@@ -28,12 +26,10 @@ class Keys extends Spec {
       const spec = this.options[key];
       const toCheck = (value.get && value.get(key)) || value[key];
       if (spec.assert(toCheck) === invalid) {
-        addToSpecs(value, this.name, invalid);
         return invalid;
       }
     }
 
-    addToSpecs(value, this.name, true);
     return value;
   }
 
@@ -46,12 +42,12 @@ class Keys extends Spec {
    * otherwise.
    */
   explain(value: any, path: string[]) {
-    if (!(value instanceof Map) && !(typeof value === 'object')) return false;
+    if (!(typeof value === 'object')) return false;
 
     let result = true;
     for (let key in this.options) {
       const spec = this.options[key];
-      if (!value.get || spec.explain(value.get(key), path.concat([`key ${key}`])) === false) {
+      if (spec.explain(value[key], path.concat([`key ${key}`])) === false) {
         result = false;
       }
     }
@@ -70,16 +66,16 @@ class Keys extends Spec {
  * the keys initialized in this spec.
  */
 export const keys = (name: string, specs: {[key: string]: Spec}) => {
-  invariant(typeof name === 'string', 'specjs.keys was called with an invalid name.');
+  invariant(typeof name === 'string', 'perusal.keys was called with an invalid name.');
   invariant(
     typeof specs === 'object' && Object.keys(specs).length !== 0,
-    'specjs.keys was called with invalid key predicates. Are the key predicates in a map?'
+    'perusal.keys was called with invalid key predicates. Are the key predicates in a map?'
   );
 
   for (let key in specs) {
     invariant(
       specs[key] instanceof Spec,
-      'specjs.keys was called with invalid key predicates. Are the values specifications?'
+      'perusal.keys was called with invalid key predicates. Are the values specifications?'
     );
   }
 

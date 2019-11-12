@@ -2,7 +2,7 @@ import Spec from './spec';
 import {invalid} from '../control';
 import invariant from 'tiny-invariant';
 
-/** @module specjs/spec */
+/** @module perusal/spec */
 
 /**
  * Class representing `And` specs, which requires that all the sub-specs be fulfilled.
@@ -11,11 +11,11 @@ import invariant from 'tiny-invariant';
 class And extends Spec {
   /**
    * Asserts this spec on a given value. Returns the value if value passes spec,
-   * returns `specjs.invalid` otherwise.
+   * returns `perusal.invalid` otherwise.
    *
    * @param {any} value - The value to be asserted.
    * @return {invalid|any} Returns the value if value passes spec, returns
-   * specjs.invalid otherwise.
+   * perusal.invalid otherwise.
    */
   assert(value: any) {
     for (let spec of this.options) {
@@ -56,10 +56,10 @@ class And extends Spec {
  * @return {And} Returns an `And` spec representing the conjunction of the given specs.
  */
 export function and(name: string, ...specs: Spec[]) {
-  invariant(typeof name === 'string', 'specjs.and was called with an invalid name.');
-  invariant(specs.length > 0, 'specjs.and was called without specs.');
+  invariant(typeof name === 'string', 'perusal.and was called with an invalid name.');
+  invariant(specs.length > 0, 'perusal.and was called without specs.');
   for (let spec of specs) {
-    invariant(spec instanceof Spec, 'specjs.and was called with invalid specs.');
+    invariant(spec instanceof Spec, 'perusal.and was called with invalid specs.');
   }
   return new And(name, specs);
 }

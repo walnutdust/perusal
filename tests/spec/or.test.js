@@ -1,7 +1,7 @@
 import {expect} from 'chai';
-import {or, Spec, assert} from '../../lib/utils';
-import {even, odd, isNumber, isString} from '../../lib/preds';
-import {invalid} from '../../lib/control';
+import {or, Spec, assert} from '../../cjs/utils';
+import {even, odd, isNumber, isString} from '../../cjs/preds';
+import {invalid} from '../../cjs/control';
 import {suspendConsole, restoreConsole} from '../testing-utils';
 
 describe('or', function() {

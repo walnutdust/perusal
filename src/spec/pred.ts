@@ -2,7 +2,7 @@ import Spec from './spec';
 import {invalid} from '../control';
 import invariant from 'tiny-invariant';
 
-/** @module specjs/spec */
+/** @module perusal/spec */
 
 /**
  * Class representing `Predicates`, the building block of specs. It is important that
@@ -13,11 +13,11 @@ import invariant from 'tiny-invariant';
 export default class Pred extends Spec {
   /**
    * Asserts this spec on a given value. Returns the value if value passes spec,
-   * returns `specjs.invalid` otherwise.
+   * returns `perusal.invalid` otherwise.
    *
    * @param {any} value - The value to be asserted.
    * @return {invalid|any} Returns the value if value passes spec, returns
-   * specjs.invalid otherwise.
+   * perusal.invalid otherwise.
    * @throws Throws an error if predicate function does not return boolean when
    * fed with input value.
    */
@@ -72,9 +72,9 @@ export default class Pred extends Spec {
  * @throws Throws an error if name is not a valid string or fn is not a valid function.
  */
 export const pred = (name: string, fn: (value: any) => boolean) => {
-  invariant(fn && typeof fn === 'function', 'specjs.pred was called with an invalid predicate.');
+  invariant(fn && typeof fn === 'function', 'perusal.pred was called with an invalid predicate.');
 
-  invariant(name && typeof name === 'string', 'specjs.pred was called with an invalid string.');
+  invariant(name && typeof name === 'string', 'perusal.pred was called with an invalid string.');
 
   return new Pred(name, fn);
 };
