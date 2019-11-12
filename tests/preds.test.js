@@ -10,8 +10,8 @@ import {
   isBool,
   isSymbol,
   isFn,
-} from '../lib/preds';
-import {isValid} from '../lib/utils';
+} from '../cjs/preds';
+import {isValid} from '../cjs/utils';
 import {expect} from 'chai';
 import {suspendConsole, restoreConsole} from './testing-utils';
 

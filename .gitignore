@@ -105,3 +105,8 @@ dist
 
 # VS Code
 .vscode
+
+# output
+/cjs 
+/es
+

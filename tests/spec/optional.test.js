@@ -1,7 +1,7 @@
 import {expect} from 'chai';
-import {optional, Spec, assert} from '../../lib/utils';
-import {even, odd} from '../../lib/preds';
-import {invalid} from '../../lib/control';
+import {optional, Spec, assert} from '../../cjs/utils';
+import {even, odd} from '../../cjs/preds';
+import {invalid} from '../../cjs/control';
 import {suspendConsole, restoreConsole} from '../testing-utils';
 
 describe('optional key', function() {

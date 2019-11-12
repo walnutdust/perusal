@@ -1,7 +1,7 @@
 import {expect} from 'chai';
-import {pred, Spec, assert} from '../../lib/utils';
-import {even, odd} from '../../lib/preds';
-import {invalid} from '../../lib/control';
+import {pred, Spec, assert} from '../../cjs/utils';
+import {even, odd} from '../../cjs/preds';
+import {invalid} from '../../cjs/control';
 import {suspendConsole, restoreConsole} from '../testing-utils';
 
 describe('pred', function() {

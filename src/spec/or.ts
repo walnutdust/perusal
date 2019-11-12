@@ -2,7 +2,7 @@ import Spec from './spec';
 import {invalid} from '../control';
 import invariant from 'tiny-invariant';
 
-/** @module specjs/spec */
+/** @module perusal/spec */
 
 /**
  * Class representing `Or` specs, which requires that at least one sub-spec be
@@ -12,11 +12,11 @@ import invariant from 'tiny-invariant';
 class Or extends Spec {
   /**
    * Asserts this spec on a given value. Returns the value if value passes spec,
-   * returns `specjs.invalid` otherwise.
+   * returns `perusal.invalid` otherwise.
    *
    * @param {any} value - The value to be asserted.
    * @return {invalid|any} Returns the value if value passes spec, returns
-   * specjs.invalid otherwise.
+   * perusal.invalid otherwise.
    */
   assert(value: any) {
     for (let spec of this.options) {
@@ -64,10 +64,10 @@ class Or extends Spec {
  * @return {And} Returns an `Or` spec representing the disjunction of the given specs.
  */
 export const or = (name: string, ...specs: Spec[]) => {
-  invariant(typeof name === 'string', 'specjs.or was called with an invalid name.');
-  invariant(specs.length > 0, 'specjs.or was called without specs.');
+  invariant(typeof name === 'string', 'perusal.or was called with an invalid name.');
+  invariant(specs.length > 0, 'perusal.or was called without specs.');
   for (let spec of specs) {
-    invariant(spec instanceof Spec, 'specjs.or was called with invalid specs.');
+    invariant(spec instanceof Spec, 'perusal.or was called with invalid specs.');
   }
   return new Or(name, specs);
 };

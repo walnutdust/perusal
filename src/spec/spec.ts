@@ -1,9 +1,9 @@
 import invariant from 'tiny-invariant';
 
-/** @module specjs/spec */
+/** @module perusal/spec */
 
 /**
- * Abstract class representing `Spec`, the main specification of *specjs*. Declares the abstract
+ * Abstract class representing `Spec`, the main specification of *perusal*. Declares the abstract
  * method assert and explain which is used by the utility methods ofr validity checking and
  * specification assertion on a given value.
  * @private
