@@ -1,5 +1,5 @@
 import {expect} from 'chai';
-import {pred, Spec, assert} from '../../cjs/utils';
+import {pred, Spec} from '../../cjs/utils';
 import {even, odd} from '../../cjs/preds';
 import {invalid} from '../../cjs/control';
 import {suspendConsole, restoreConsole} from '../testing-utils';
@@ -20,11 +20,11 @@ describe('pred', function() {
 
   describe('assert', function() {
     it('returns the value if value passes', function() {
-      expect(assert(12, even)).to.eq(12);
+      expect(even.assert(12)).to.eq(12);
     });
 
     it('returns invalid if value fails', function() {
-      expect(assert(12, odd)).to.eq(invalid);
+      expect(odd.assert(12)).to.eq(invalid);
     });
   });
 

@@ -15,18 +15,18 @@ const defs: {[key: string]: Spec} = {};
 
 /**
  * Asserts a spec on a given value. Returns the value if value passes specification,
- * returns `perusal.invalid` otherwise.
+ * returns `perusal-immutable.invalid` otherwise.
  *
  * @param {any} value - The value to be asserted.
  * @param {Spec | string} spec - The spec to be used.
  * @return {invalid|any} Returns the value if value passes specification, returns
- * perusal.invalid otherwise.
+ * perusal-immutable.invalid otherwise.
  */
 export function assert(value: any, spec: Spec | string) {
   // getSpec allows us to pass it strings to retrive previously defined specs.
   invariant(
     typeof spec === 'string' || spec instanceof Spec,
-    `Invalid spec ${spec} passed to perusal.assert.`
+    `Invalid spec ${spec} passed to perusal-immutable.assert.`
   );
 
   const specification = getSpec(spec);
@@ -50,7 +50,7 @@ export function isValid(value: any, spec: Spec | string) {
   // Error checking/throwing here to provide more helpful error messages.
   invariant(
     typeof spec === 'string' || spec instanceof Spec,
-    `Invalid specification ${spec} passed to perusal.isValid.`
+    `Invalid specification ${spec} passed to perusal-immutable.isValid.`
   );
 
   return assert(value, spec) !== invalid;
@@ -65,7 +65,7 @@ export function isValid(value: any, spec: Spec | string) {
 export function explain(value: any, spec: Spec | string) {
   invariant(
     typeof spec === 'string' || spec instanceof Spec,
-    `Invalid specification ${spec} passed to perusal.explain.`
+    `Invalid specification ${spec} passed to perusal-immutable.explain.`
   );
 
   const specification = getSpec(spec);
@@ -93,7 +93,7 @@ export function explain(value: any, spec: Spec | string) {
 export function explainIfInvalid(value: any, spec: Spec | string) {
   invariant(
     typeof spec === 'string' || spec instanceof Spec,
-    `Invalid specification ${spec} passed to perusal.explainIfInvalid.`
+    `Invalid specification ${spec} passed to perusal-immutable.explainIfInvalid.`
   );
 
   const specification = getSpec(spec);
@@ -114,8 +114,9 @@ export function explainIfInvalid(value: any, spec: Spec | string) {
  * @param {Spec} spec - The spec to be defined.
  */
 export function define(name: string, spec: Spec) {
+  invariant(typeof name == 'string', 'Specs can only be defined with string names!');
   invariant(!defs[name], `Specfication for ${name} already exists!`);
-  invariant(spec instanceof Spec, 'perusal.define called with invalid spec.');
+  invariant(spec instanceof Spec, 'perusal-immutable.define called with invalid spec.');
   defs[name] = spec;
 }
 

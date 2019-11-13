@@ -149,7 +149,9 @@ var Keys =
           for (var _key2 in this.options) {
             var spec = this.options[_key2];
 
-            if (spec.explain(value[_key2], path.concat(['key '.concat(_key2)])) === false) {
+            var toCheck = (value.get && value.get(_key2)) || value[_key2];
+
+            if (spec.explain(toCheck, path.concat(['key '.concat(_key2)])) === false) {
               result = false;
             }
           }

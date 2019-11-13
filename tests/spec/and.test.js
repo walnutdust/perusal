@@ -1,5 +1,5 @@
 import {expect} from 'chai';
-import {and, Spec, assert} from '../../cjs/utils';
+import {and, Spec} from '../../cjs/utils';
 import {even, odd, isNumber} from '../../cjs/preds';
 import {invalid} from '../../cjs/control';
 import {suspendConsole, restoreConsole} from '../testing-utils';
@@ -24,11 +24,11 @@ describe('and', function() {
 
   describe('assert', function() {
     it('returns the value if value passes', function() {
-      expect(assert(12, and('is even number?', isNumber, even))).to.eq(12);
+      expect(and('is even number?', isNumber, even).assert(12)).to.eq(12);
     });
 
     it('returns invalid if value fails', function() {
-      expect(assert(12, and('is odd number?', isNumber, odd))).to.eq(invalid);
+      expect(and('is even number?', isNumber, even).assert(11)).to.eq(invalid);
     });
   });
 
