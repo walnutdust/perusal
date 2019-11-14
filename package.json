@@ -1,20 +1,25 @@
 {
-  "name": "specjs",
-  "version": "1.0.0",
-  "description": "`specjs` seeks to implement a specification system for Javascript.",
-  "main": "index.js",
+  "name": "perusal",
+  "version": "0.0.0beta1.5",
+  "description": "perusal seeks to implement a specification system for Javascript.",
+  "main": "cjs/index.js",
+  "module": "es/index.js",
   "scripts": {
-    "docs": "jsdoc -c .jsdoc.json",
+    "docs": "typedoc --theme ./node_modules/typedoc-neo-theme/bin/default src",
     "test": "mocha -c -r ts-node/register,@babel/register --reporter dot 'tests/**/*.test.js'",
     "type-check": "tsc --noEmit",
     "type-check:watch": "npm run type-check -- --watch",
-    "build": "npm run build:types && npm run build:js",
+    "build": "npm run build:types && npm run build:cjs && npm run build:es",
     "build:types": "tsc --emitDeclarationOnly",
-    "build:js": "babel src --out-dir lib --extensions \".ts,.tsx\" --source-maps inline"
+    "build:cjs": "NODE_ENV=cjs babel src --extensions \".ts,.tsx\" --out-dir cjs",
+    "build:es": "NODE_ENV=es babel src  --extensions \".ts,.tsx\" --out-dir es"
+  },
+  "typescript": {
+    "definition": "dist/index.d.ts"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/walnutdust/specjs.git"
+    "url": "git+https://github.com/walnutdust/perusal.git"
   },
   "keywords": [],
   "author": {
@@ -23,9 +28,9 @@
   },
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/walnutdust/specjs/issues"
+    "url": "https://github.com/walnutdust/perusal/issues"
   },
-  "homepage": "https://github.com/walnutdust/specjs#readme",
+  "homepage": "https://github.com/walnutdust/perusal#readme",
   "devDependencies": {
     "@babel/cli": "^7.7.0",
     "@babel/core": "^7.7.2",
@@ -44,16 +49,17 @@
     "eslint": "^5.14.1",
     "eslint-plugin-mocha": "^6.2.1",
     "husky": "^3.0.9",
-    "jsdoc": "^3.6.3",
     "lint-staged": "^9.4.2",
     "mocha": "^6.2.2",
     "prettier": "^1.19.1",
     "pretty-quick": "^2.0.1",
+    "sinon": "^7.5.0",
     "ts-node": "^8.4.1",
+    "typedoc": "^0.15.0",
+    "typedoc-neo-theme": "^1.0.4",
     "typescript": "^3.7.2"
   },
   "dependencies": {
-    "immutable": "^4.0.0-rc.12",
     "tiny-invariant": "^1.0.6"
   },
   "husky": {
@@ -62,9 +68,10 @@
     }
   },
   "lint-staged": {
-    "*.{js,jsx}": [
-      "./node_modules/.bin/eslint --ext .jsx,js,.ts --ignore-path .gitignore --fix",
+    "*.{ts}": [
+      "./node_modules/.bin/eslint --ext .ts --ignore-path .gitignore --fix",
       "pretty-quick --staged",
+      "yarn docs",
       "git add"
     ]
   }

@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html class="default no-js">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>perusal</title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="assets/css/main.css" />
+  </head>
+  <body>
+    <header>
+      <div class="tsd-page-toolbar">
+        <div class="container">
+          <div class="table-wrap">
+            <div class="table-cell" id="tsd-search" data-index="assets/js/search.js" data-base=".">
+              <div class="field">
+                <label for="tsd-search-field" class="tsd-widget search no-caption">Search</label>
+                <input id="tsd-search-field" type="text" />
+              </div>
+              <ul class="results">
+                <li class="state loading">Preparing search index...</li>
+                <li class="state failure">The search index is not available</li>
+              </ul>
+              <ul class="results-priority" style="display:none"></ul>
+              <a href="index.html" class="title">perusal</a>
+            </div>
+            <div class="table-cell" id="tsd-widgets">
+              <div id="tsd-filter">
+                <a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a>
+                <div class="tsd-filter-group">
+                  <div class="tsd-select" id="tsd-filter-visibility">
+                    <span class="tsd-select-label">All</span>
+                    <ul class="tsd-select-list">
+                      <li data-value="public">Public</li>
+                      <li data-value="protected">Public/Protected</li>
+                      <li data-value="private" class="selected">All</li>
+                    </ul>
+                  </div>
+                  <input type="checkbox" id="tsd-filter-inherited" checked />
+                  <label class="tsd-widget" for="tsd-filter-inherited">Inherited</label>
+                  <input type="checkbox" id="tsd-filter-externals" checked />
+                  <label class="tsd-widget" for="tsd-filter-externals">Externals</label>
+                  <input type="checkbox" id="tsd-filter-only-exported" />
+                  <label class="tsd-widget" for="tsd-filter-only-exported">Only exported</label>
+                </div>
+              </div>
+              <a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="tsd-page-title">
+        <div class="container">
+          <ul class="tsd-breadcrumb"></ul>
+        </div>
+      </div>
+    </header>
+    <div class="container container-main">
+      <div class="row">
+        <div class="col-3 col-menu menu-sticky-wrap menu-highlight">
+          <nav class="tsd-navigation primary">
+            <ul>
+              <li class="globals  ">
+                <a href="globals.html" style="display:none"><em>Globals</em></a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+        <div class="col-7 offset-3 col-content">
+          <h1>perusal</h1>
+          <div class="tsd-panel tsd-typography">
+            <a href="#perusal" id="perusal" style="color: inherit; text-decoration: none;">
+              <h1>perusal</h1>
+            </a>
+            <a
+              href="#performant-specification-system-for-javascript"
+              id="performant-specification-system-for-javascript"
+              style="color: inherit; text-decoration: none;"
+            >
+              <h3>Performant Specification System for Javascript</h3>
+            </a>
+            <p>
+              A specification system (spec) ensures that data that is passed in conforms to the
+              requirements.
+            </p>
+            <blockquote>
+              <p>
+                <code>perusal</code> implements a performant spec system for Javascript - users can
+                define custom specifications, and verify that data satisfies the provided
+                specification. Pairs well with
+                <a href="https://immutable-js.github.io/immutable-js/">Immutable.js</a> to improve
+                speed by retaining metadata on the passing/failing specs - activate this by using
+                <code>perusal</code> instead!
+              </p>
+            </blockquote>
+            <p>
+              Inspired by Clojure&#39;s <a href="https://clojure.org/guides/spec">spec/alpha</a>.
+            </p>
+            <a href="#examples" id="examples" style="color: inherit; text-decoration: none;">
+              <h2>Examples</h2>
+            </a>
+            <pre><code class="language-javascript"><span class="hljs-comment">// Invalid validity checking returns false.</span>
+isValid(<span class="hljs-number">1</span>, even); <span class="hljs-comment">// false</span>
+
+<span class="hljs-comment">// Valid values returns true.</span>
+isValid(<span class="hljs-number">2</span>, even); <span class="hljs-comment">// true</span>
+
+<span class="hljs-comment">// We can define our own specifications.</span>
+define(<span class="hljs-string">'is-a?'</span>, <span class="hljs-keyword">new</span> Pred(<span class="hljs-string">"is 'a'?"</span>, (value) =&gt; value === <span class="hljs-string">'a'</span>));
+isValid(<span class="hljs-string">'b'</span>, <span class="hljs-string">'is-a?'</span>); <span class="hljs-comment">// false</span>
+isValid(<span class="hljs-string">'a'</span>, <span class="hljs-string">'is-a?'</span>); <span class="hljs-comment">// true</span>
+
+<span class="hljs-comment">// We can join multiple predicates.</span>
+<span class="hljs-comment">// Note that the definition key does not have to be the same as the explanatory string.</span>
+define(<span class="hljs-string">'pos-even'</span>, and(<span class="hljs-string">'positive, even number'</span>, positive, even));
+isValid(<span class="hljs-number">2</span>, <span class="hljs-string">'pos-even'</span>); <span class="hljs-comment">// true</span>
+isValid(<span class="hljs-number">-2</span>, <span class="hljs-string">'pos-even'</span>); <span class="hljs-comment">// false</span>
+
+<span class="hljs-comment">// We can also check maps.</span>
+<span class="hljs-keyword">const</span> point = {
+  <span class="hljs-attr">x</span>: <span class="hljs-number">1</span>,
+  <span class="hljs-attr">y</span>: <span class="hljs-number">2</span>,
+};
+
+<span class="hljs-comment">// Note that this uses perusal</span>
+<span class="hljs-keyword">const</span> threeDpoint = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Map</span>({
+  <span class="hljs-attr">x</span>: <span class="hljs-number">1</span>,
+  <span class="hljs-attr">y</span>: <span class="hljs-number">2</span>,
+  <span class="hljs-attr">z</span>: <span class="hljs-number">3</span>,
+});
+define(<span class="hljs-string">'point'</span>, keys(<span class="hljs-string">'2d or 3d point'</span>, {<span class="hljs-attr">x</span>: isNumber, <span class="hljs-attr">y</span>: isNumber, <span class="hljs-attr">z</span>: optional(isNumber)}));
+define(<span class="hljs-string">'point or string'</span>, or(<span class="hljs-string">'point or string'</span>, getSpec(<span class="hljs-string">'point'</span>), isString));
+isValid(point, <span class="hljs-string">'point'</span>); <span class="hljs-comment">// true</span>
+explain(point, <span class="hljs-string">'point'</span>);
+<span class="hljs-comment">/*
+  Value:
+
+  { x: 1, y: 2 }
+
+  Passes specification 2d or 3d point.
+*/</span>
+
+isValid(threeDpoint, <span class="hljs-string">'point'</span>); <span class="hljs-comment">// true</span>
+isValid(threeDpoint, <span class="hljs-string">'point or string'</span>); <span class="hljs-comment">// true</span></code></pre>
+            <p>More examples can be found in <code>example.js</code>.</p>
+            <a
+              href="#installation"
+              id="installation"
+              style="color: inherit; text-decoration: none;"
+            >
+              <h2>Installation</h2>
+            </a>
+            <p>
+              This repository is currently not published as a library. Feel free to clone the
+              repository and import as normal to test it out!
+            </p>
+            <a
+              href="#documentation"
+              id="documentation"
+              style="color: inherit; text-decoration: none;"
+            >
+              <h2>Documentation</h2>
+            </a>
+            <p>
+              Refer to the online documentation at
+              <a href="https://walnutdust.github.io/perusal">https://walnutdust.github.io/perusal</a
+              >.
+            </p>
+            <a
+              href="#that39s-great-but-what39s-a-spec-"
+              id="that39s-great-but-what39s-a-spec-"
+              style="color: inherit; text-decoration: none;"
+            >
+              <h2>That&#39;s great, but what&#39;s a spec ?</h2>
+            </a>
+            <p>
+              TL;DR: Specs provide run-time analysis and verification of the data structure with
+              flexibility although at the cost of (some) run-time performance and the lack of
+              compiler help.
+            </p>
+            <p>For more information, see the <a href="#faq">FAQ</a>.</p>
+            <a
+              href="#working-principle-of-perusal"
+              id="working-principle-of-perusal"
+              style="color: inherit; text-decoration: none;"
+            >
+              <h2>Working principle of perusal</h2>
+            </a>
+            <p>
+              <strong><em>Definitions:</em></strong>
+            </p>
+            <ul>
+              <li>
+                A <strong>predicate function</strong> is a function that is guaranteed to return a
+                boolean true/false for inputs in within its operational domain.
+              </li>
+              <li>
+                A <strong>specification</strong> comprises of one or many
+                <strong>predicate functions</strong>.
+              </li>
+            </ul>
+            <a
+              href="#design-principles-of-perusal"
+              id="design-principles-of-perusal"
+              style="color: inherit; text-decoration: none;"
+            >
+              <h2>Design principles of perusal</h2>
+            </a>
+            <ol>
+              <li>
+                <strong>Performance maintenance</strong> - implementation or usage of
+                <code>perusal</code> should operate with good performance guarantees.
+              </li>
+              <li>
+                <strong>Natural and easy expression</strong> - codebases that use
+                <code>perusal</code> should be readable without being cumbersome.
+              </li>
+              <li>
+                <strong>Sufficiently expressive</strong> - <code>perusal</code> should enforce good
+                behavior, not force users to work around it.
+              </li>
+              <li>
+                <strong>Help, rather than harm, the user</strong> - intuitive and expressive error
+                messages.
+              </li>
+            </ol>
+            <a href="#faq" id="faq" style="color: inherit; text-decoration: none;">
+              <h2>FAQ</h2>
+            </a>
+            <a
+              href="#1-okay-so-what39s-a-spec-and-how-does-it-differ-from-static-typing"
+              id="1-okay-so-what39s-a-spec-and-how-does-it-differ-from-static-typing"
+              style="color: inherit; text-decoration: none;"
+            >
+              <h3>1. Okay, so what&#39;s a spec and how does it differ from static typing?</h3>
+            </a>
+            <p>
+              Static typing is used by programmers to help them reason about the program.
+              Specifically, static typing offers the following benefits:
+            </p>
+            <ol>
+              <li>
+                <strong>Minimisation of potential bugs</strong> - With static typing, the ability to
+                introduce bugs in the program by calling the wrong method is significantly reduced.
+              </li>
+              <li>
+                <strong>Linter/Compiler help</strong> - The linter/compiler helps with the above
+                point by inferring the types of arguments based on the methods that are called, and
+                throws a warning when conflicting types are inferred for a variable, allowing errors
+                to be detected at compile, rather than run-time.
+              </li>
+              <li>
+                <strong>Optimization</strong> - Certain languages allow for static typing
+                information to be used by compilers to create optimized code.
+              </li>
+            </ol>
+            <p>
+              Specs, on the other hand, performs run-time verification on the data, which offers:
+            </p>
+            <ol>
+              <li>
+                <strong>Greater flexibility/expressiveness of checking</strong> - instead of
+                sticking to given types and having to play with them, we can check that the data
+                adheres to certain guidelines (e.g. is a prime, is either a function or a string, or
+                has valid argument patterns (A, B, and C or B, D, and E). Arguably, when the data is
+                more complicated, it becomes less intuitive to forcefully fit data into certain
+                types, and types might not capture all the guarantees of the data structure anyways.
+              </li>
+              <li>
+                <strong>Optional checking</strong> - While enforced checking would stamp out bugs
+                arising from invalid method calls, such a move severely limits the flexibility of
+                expression in the language. Particularly, since Javascript itself is a dynamic
+                language with no provisons for code optimization based on typing, a conventional
+                type offering in this library does not do too much for the language (although tools
+                like <a href="https://flow.org/">Flow</a> and
+                <a href="https://www.typescriptlang.org/">Typescript</a> can be used!) We should
+                work with the language features that are offered, rather than running counter to it
+                - embracing Javascript&#39;s dynamism.
+              </li>
+            </ol>
+            <p>
+              Refer to Clojure&#39;s <a href="https://clojure.org/about/spec">spec guide</a> to see
+              how people smarter than me reason about this.
+            </p>
+            <a
+              href="#2-why-not-use-just-clojurescript"
+              id="2-why-not-use-just-clojurescript"
+              style="color: inherit; text-decoration: none;"
+            >
+              <h3>2. Why not use just Clojurescript?</h3>
+            </a>
+            <p>
+              Definitely! Clojurescript already a
+              <a href="https://clojure.org/guides/spec">spec library</a>.
+            </p>
+            <p>
+              However, Clojurescript performs this checking from fresh as we build up a data
+              structure, leading to unnecessary repetition of checks which may be costly. See the
+              next question for benchmarks!
+            </p>
+            <a
+              href="#3-how-much-is-performance-affected"
+              id="3-how-much-is-performance-affected"
+              style="color: inherit; text-decoration: none;"
+            >
+              <h3>3. How much is performance affected?</h3>
+            </a>
+            <p>
+              If we were only doing dynamic type checking via <code>typeof</code>, it takes only
+              about ~1% more time, and scales linearly. For more complex arguments it is harder to
+              argue about it, but note that most programs do end up explicitly checking inputs in
+              some form or the other, be it nullable checks, or whether the input asserts to a
+              certain usable specification. In those cases, <code>perusal</code> helps formalise the
+              code, and offers programmers the capacity to say that given a input that satisfies a
+              certain spec, there will always be output of a certain spec?
+            </p>
+            <p>
+              To further improve performance, <code>perusal</code> also offers an immutable version
+              of itself, which wraps immutable data types from <code>immutable.js</code> with
+              metadata that tracks the specs that a certain object has fulfilled. In this manner, if
+              the programmer strictly uses the provided wrappers, we skip repetitive checking and
+              get a huge performance boost if the same data is used in multiple areas.
+            </p>
+            <p>
+              <strong><em>Benchmarks</em></strong>
+            </p>
+            <p><strong>Simple Type Checking</strong></p>
+            <pre><code class="language-javascript"><span class="hljs-keyword">const</span> {performance} = <span class="hljs-built_in">require</span>(<span class="hljs-string">'perf_hooks'</span>);
+
+<span class="hljs-keyword">const</span> n = <span class="hljs-number">100000000</span>;
+<span class="hljs-keyword">let</span> test;
+
+<span class="hljs-keyword">const</span> t0 = performance.now();
+<span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; n; i++) {
+  test = <span class="hljs-string">'test'</span>;
+}
+<span class="hljs-keyword">const</span> t1 = performance.now();
+<span class="hljs-built_in">console</span>.log(<span class="hljs-string">'Declaring a string took '</span> + (t1 - t0) / n + <span class="hljs-string">' milliseconds on average.'</span>);
+<span class="hljs-comment">// Declaring a string took 8.706519499421119e-7 milliseconds on average.</span>
+
+<span class="hljs-keyword">const</span> t2 = performance.now();
+<span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; n; i++) {
+  <span class="hljs-keyword">typeof</span> <span class="hljs-string">'test'</span> === <span class="hljs-string">'string'</span>;
+}
+<span class="hljs-keyword">const</span> t3 = performance.now();
+<span class="hljs-built_in">console</span>.log(<span class="hljs-string">'Checking string type took '</span> + (t3 - t2) / n + <span class="hljs-string">' milliseconds on average.'</span>);
+<span class="hljs-built_in">console</span>.log(<span class="hljs-string">'Checking a string took '</span> + ((t3 - t2) / (t1 - t0)).toPrecision(<span class="hljs-number">3</span>) + <span class="hljs-string">'% more time.'</span>);
+<span class="hljs-keyword">const</span> n = <span class="hljs-number">10000000</span>;
+<span class="hljs-keyword">const</span> t0 = performance.now();
+<span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">10000000</span>; i++) {
+  <span class="hljs-keyword">typeof</span> <span class="hljs-string">'test'</span> === <span class="hljs-string">'string'</span>;
+}
+<span class="hljs-keyword">const</span> t1 = performance.now();
+<span class="hljs-built_in">console</span>.log(<span class="hljs-string">'Checking string type took '</span> + (t1 - t0) / n + <span class="hljs-string">' milliseconds on average.'</span>);
+<span class="hljs-comment">// Checking string type took 8.643735998868942e-7 milliseconds on average.</span>
+<span class="hljs-comment">// Checking a string took 0.993% more time.</span></code></pre>
+            <p><strong>Imutable types usage performance boost</strong></p>
+            <p><em>Javascript</em></p>
+            <pre><code class="language-javascript"><span class="hljs-comment">// Explanation works well with nesting too</span>
+<span class="hljs-keyword">const</span> nestedPoint = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Map</span>({
+  <span class="hljs-attr">x</span>: <span class="hljs-keyword">new</span> <span class="hljs-built_in">Map</span>({
+    <span class="hljs-attr">x</span>: <span class="hljs-keyword">new</span> <span class="hljs-built_in">Map</span>({
+      <span class="hljs-attr">x</span>: <span class="hljs-number">2</span>,
+      <span class="hljs-attr">y</span>: <span class="hljs-number">3</span>,
+    }),
+  }),
+});
+define(<span class="hljs-string">'2-nested point'</span>, keys(<span class="hljs-string">'nested nested point'</span>, {
+  <span class="hljs-attr">x</span>: keys(<span class="hljs-string">'nested point'</span>, {<span class="hljs-attr">x</span>: getSpec(<span class="hljs-string">'point'</span>)}),
+}));
+isValid(nestedPoint, <span class="hljs-string">'2-nested point'</span>); <span class="hljs-comment">// true</span>
+
+
+<span class="hljs-comment">// Note that this uses perusal</span>
+<span class="hljs-comment">// A good way to capture the same behavior is via the immutable from JS method.</span>
+<span class="hljs-keyword">const</span> nestedPoint2 = fromJS({
+  <span class="hljs-attr">x</span>: {
+    <span class="hljs-attr">x</span>: {
+      <span class="hljs-attr">x</span>: <span class="hljs-number">2</span>,
+      <span class="hljs-attr">y</span>: <span class="hljs-number">3</span>,
+    },
+  },
+});
+
+
+isValid(nestedPoint2, <span class="hljs-string">'2-nested point'</span>); <span class="hljs-comment">// true</span>
+
+<span class="hljs-comment">// Note that this uses perusal</span>
+<span class="hljs-comment">// This works with normal JS Maps as well.</span>
+<span class="hljs-keyword">const</span> nestedPoint3 = {
+  <span class="hljs-attr">x</span>: {
+    <span class="hljs-attr">x</span>: {
+      <span class="hljs-attr">x</span>: <span class="hljs-number">2</span>,
+      <span class="hljs-attr">y</span>: <span class="hljs-number">3</span>,
+    },
+  },
+};
+
+isValid(nestedPoint3, <span class="hljs-string">'2-nested point'</span>); <span class="hljs-comment">// true</span>
+<span class="hljs-comment">// Test 1: Simple JS Maps</span>
+<span class="hljs-keyword">let</span> start,
+  end,
+  numTimes = <span class="hljs-number">10000000</span>;
+
+start = performance.now();
+<span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; numTimes; i++) {
+  isValid(nestedPoint3, <span class="hljs-string">'2-nested point'</span>);
+}
+end = performance.now();
+<span class="hljs-built_in">console</span>.log(
+  <span class="hljs-string">'Test 1: Time taken to perform '</span> +
+    numTimes +
+    <span class="hljs-string">' validity checks on the JS Map is '</span> +
+    (end - start) +
+    <span class="hljs-string">'ms, averaging '</span> +
+    (end - start) / numTimes +
+    <span class="hljs-string">'ms.'</span>
+);
+<span class="hljs-comment">/* Test 1: Time taken to perform 10000000 validity checks on the JS Map is 5441.707319021225ms, averaging 0.0005441707319021225ms. */</span>
+
+<span class="hljs-comment">// This uses perusal</span>
+<span class="hljs-comment">// Test 2: fromJS (immutableJS) Map</span>
+start = performance.now();
+<span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; numTimes; i++) {
+  isValid(nestedPoint2, <span class="hljs-string">'2-nested point'</span>);
+}
+end = performance.now();
+<span class="hljs-built_in">console</span>.log(
+  <span class="hljs-string">'Test 2: Time taken to perform '</span> +
+    numTimes +
+    <span class="hljs-string">' validity checks on the fromJS Map is '</span> +
+    (end - start) +
+    <span class="hljs-string">'ms, averaging '</span> +
+    (end - start) / numTimes +
+    <span class="hljs-string">'ms.'</span>
+);
+<span class="hljs-comment">/* Test 2: Test 2: Time taken to perform 10000000 validity checks on the fromJS Map is 1474.4121170043945ms, averaging 0.00014744121170043946ms. */</span>
+
+<span class="hljs-comment">// This uses perusal</span>
+<span class="hljs-comment">// Test 3: immutableJS Map</span>
+start = performance.now();
+<span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; numTimes; i++) {
+  isValid(nestedPoint, <span class="hljs-string">'2-nested point'</span>);
+}
+end = performance.now();
+<span class="hljs-built_in">console</span>.log(
+  <span class="hljs-string">'Test 3: Time taken to perform '</span> +
+    numTimes +
+    <span class="hljs-string">' validity checks on the immutable Map is '</span> +
+    (end - start) +
+    <span class="hljs-string">'ms, averaging '</span> +
+    (end - start) / numTimes +
+    <span class="hljs-string">'ms.'</span>
+);
+
+<span class="hljs-comment">/* Test 3: Time taken to perform 10000000 validity checks on the immutable Map is 1248.7203179597855ms, averaging 0.00012487203179597855ms. */</span></code></pre>
+            <p><em>Clojure</em></p>
+            <pre><code class="language-clojure">(<span class="hljs-name"><span class="hljs-builtin-name">ns</span></span> benchmark (<span class="hljs-symbol">:require</span> [clojure.spec.alpha <span class="hljs-symbol">:as</span> s]))
+(<span class="hljs-name">s/def</span> <span class="hljs-symbol">::x-coord</span> int?)
+(<span class="hljs-name">s/def</span> <span class="hljs-symbol">::y-coord</span> int?)
+(<span class="hljs-name">s/def</span> <span class="hljs-symbol">::point</span> (<span class="hljs-name">s/keys</span> <span class="hljs-symbol">:req-un</span> [<span class="hljs-symbol">::x-coord</span>]
+                       <span class="hljs-symbol">:opt-un</span> [<span class="hljs-symbol">::y-coord</span>]))
+
+(<span class="hljs-name">s/def</span> <span class="hljs-symbol">::nested-point</span> (<span class="hljs-name">s/keys</span> <span class="hljs-symbol">:req-un</span> [<span class="hljs-symbol">::point</span>]))
+
+(<span class="hljs-name">s/def</span> <span class="hljs-symbol">::nested-nested-point</span> (<span class="hljs-name">s/keys</span> <span class="hljs-symbol">:req-un</span> [<span class="hljs-symbol">::nested-point</span>]))
+
+(<span class="hljs-name"><span class="hljs-builtin-name">time</span></span> (<span class="hljs-name"><span class="hljs-builtin-name">dotimes</span></span> [_ <span class="hljs-number">10000000</span>] (<span class="hljs-name">s/valid?</span> <span class="hljs-symbol">::nested-nested-point</span>  {<span class="hljs-symbol">:nested-point</span> {<span class="hljs-symbol">:point</span> {<span class="hljs-symbol">:x-coord</span> <span class="hljs-number">2</span> <span class="hljs-symbol">:y-coord</span> <span class="hljs-number">3</span>}}})))
+
+(<span class="hljs-comment">comment</span> <span class="hljs-string">"Elapsed time: 31613.900138 msecs."</span>)</code></pre>
+            <p>
+              As we may have expected, the immutable Maps take about the same times. We also note
+              that the mutable version takes nearly three times as long as the immutable versions
+              with this input.
+            </p>
+            <p>
+              For comparison purposes, clojure&#39;s <code>spec/alpha</code> (which inspired this
+              library) gives us 31613.900138 msecs, which is about 300 times our immutable version,
+              and 30 times our mutable version implementation.
+            </p>
+            <a
+              href="#when-should-i-use-not-use-this-library"
+              id="when-should-i-use-not-use-this-library"
+              style="color: inherit; text-decoration: none;"
+            >
+              <h2>When should I use/ not use this library?</h2>
+            </a>
+            <p>
+              <strong><em>Suggested Usages</em></strong
+              >:
+            </p>
+            <ol>
+              <li>
+                Data-processing heavy programs - Ensure that the data fits a required specification
+                before beginning to process it, and be reassured that if the specification fully
+                expresses the requirements of the program, the remainder of the program will be able
+                to process the data without difficulties.
+              </li>
+              <li>
+                API-facing functions/ APIs - Consider an API that searches a person either with
+                their first name and last name or with their address. APIs normally would have them
+                at the same endpoint, but it would be misleading to suggest that all three arguments
+                are optional - supplying only the last name would not work. With
+                <code>perusal</code>, the APIs are able to specify the possible combinations of
+                information it wishes to accept.
+              </li>
+            </ol>
+            <p>
+              <strong><em>Avoid when</em></strong
+              >:
+            </p>
+            <ol>
+              <li>
+                The developer team is able to be fully certain that the data flow within the program
+                is as intended - in this case, there is no need to install <code>perusal</code> to
+                verify the data.
+              </li>
+              <li>
+                The program requires high level of optimization and speed -
+                <code>perusal</code> comes with performance costs since it has to check the type
+              </li>
+            </ol>
+            <p>
+              In general, <code>perusal</code> is good for when we want to assert that the input
+              data fulfills a certain structure before we perform further processing (e.g. sending
+              it out to another API, data processing). With the immutable version (<code
+                >perusal immutable</code
+              >), users do not have to worry about costs associated with repeated checking of data
+              that is handled between functions, since the metadata will be stored if the same data
+              is used.
+            </p>
+            <a
+              href="#are-there-alternatives"
+              id="are-there-alternatives"
+              style="color: inherit; text-decoration: none;"
+            >
+              <h2>Are there alternatives?</h2>
+            </a>
+            <p>
+              Sure! Look at <a href="https://github.com/prayerslayer/js.spec">js.spec</a> or
+              <a href="https://github.com/mrijk/speculaas">speculaas</a>.
+            </p>
+            <a href="#roadmap" id="roadmap" style="color: inherit; text-decoration: none;">
+              <h2>Roadmap</h2>
+            </a>
+            <ol>
+              <li><code>coll</code>, <code>every</code></li>
+              <li>User handling of error logging.</li>
+              <li>Transferrable spec initialization.</li>
+            </ol>
+            <a
+              href="#contributors"
+              id="contributors"
+              style="color: inherit; text-decoration: none;"
+            >
+              <h2>Contributors</h2>
+            </a>
+            <p>Garett Tok Ern Liang <a href="https://github.com/walnutdust/">(walnutdust)</a></p>
+            <a href="#license" id="license" style="color: inherit; text-decoration: none;">
+              <h2>License</h2>
+            </a>
+            <p>This project is licenced under the MIT Licence.</p>
+          </div>
+          <!--{&quot;theme&quot;:&quot;./node_modules/typedoc-neo-theme/bin/default&quot;,&quot;mode&quot;:0,&quot;out&quot;:&quot;docs&quot;}-->
+        </div>
+        <div class="col-2 col-menu secondary-menu">
+          <nav class="tsd-navigation secondary menu-sticky">
+            <ul class="before-current">
+              <li class=" tsd-kind-class tsd-is-private tsd-is-not-exported root">
+                <a href="classes/and.html" class="tsd-kind-icon">And</a>
+              </li>
+              <li class=" tsd-kind-class tsd-is-private tsd-is-not-exported root">
+                <a href="classes/keys.html" class="tsd-kind-icon">Keys</a>
+              </li>
+              <li class=" tsd-kind-class tsd-is-private root">
+                <a href="classes/optional.html" class="tsd-kind-icon">Optional</a>
+              </li>
+              <li class=" tsd-kind-class tsd-is-private tsd-is-not-exported root">
+                <a href="classes/or.html" class="tsd-kind-icon">Or</a>
+              </li>
+              <li class=" tsd-kind-class tsd-is-private root">
+                <a href="classes/pred.html" class="tsd-kind-icon">Pred</a>
+              </li>
+              <li class=" tsd-kind-class tsd-is-private root">
+                <a href="classes/spec.html" class="tsd-kind-icon">Spec</a>
+              </li>
+              <li class=" tsd-kind-variable tsd-is-not-exported root">
+                <a href="globals.html#defs" class="tsd-kind-icon">defs</a>
+              </li>
+              <li class=" tsd-kind-variable root">
+                <a href="globals.html#even" class="tsd-kind-icon">even</a>
+              </li>
+              <li class=" tsd-kind-variable root">
+                <a href="globals.html#invalid" class="tsd-kind-icon">invalid</a>
+              </li>
+              <li class=" tsd-kind-variable root">
+                <a href="globals.html#isbool" class="tsd-kind-icon">is<wbr />Bool</a>
+              </li>
+              <li class=" tsd-kind-variable root">
+                <a href="globals.html#isfn" class="tsd-kind-icon">is<wbr />Fn</a>
+              </li>
+              <li class=" tsd-kind-variable root">
+                <a href="globals.html#isnumber" class="tsd-kind-icon">is<wbr />Number</a>
+              </li>
+              <li class=" tsd-kind-variable root">
+                <a href="globals.html#isobject" class="tsd-kind-icon">is<wbr />Object</a>
+              </li>
+              <li class=" tsd-kind-variable root">
+                <a href="globals.html#isstring" class="tsd-kind-icon">is<wbr />String</a>
+              </li>
+              <li class=" tsd-kind-variable root">
+                <a href="globals.html#issymbol" class="tsd-kind-icon">is<wbr />Symbol</a>
+              </li>
+              <li class=" tsd-kind-variable root">
+                <a href="globals.html#negative" class="tsd-kind-icon">negative</a>
+              </li>
+              <li class=" tsd-kind-variable root">
+                <a href="globals.html#odd" class="tsd-kind-icon">odd</a>
+              </li>
+              <li class=" tsd-kind-variable root">
+                <a href="globals.html#positive" class="tsd-kind-icon">positive</a>
+              </li>
+              <li class=" tsd-kind-variable root">
+                <a href="globals.html#zero" class="tsd-kind-icon">zero</a>
+              </li>
+              <li class=" tsd-kind-function root">
+                <a href="globals.html#and" class="tsd-kind-icon">and</a>
+              </li>
+              <li class=" tsd-kind-function root">
+                <a href="globals.html#assert" class="tsd-kind-icon">assert</a>
+              </li>
+              <li class=" tsd-kind-function root">
+                <a href="globals.html#define" class="tsd-kind-icon">define</a>
+              </li>
+              <li class=" tsd-kind-function root">
+                <a href="globals.html#explain" class="tsd-kind-icon">explain</a>
+              </li>
+              <li class=" tsd-kind-function root">
+                <a href="globals.html#explainifinvalid" class="tsd-kind-icon"
+                  >explain<wbr />IfInvalid</a
+                >
+              </li>
+              <li class=" tsd-kind-function root">
+                <a href="globals.html#getspec" class="tsd-kind-icon">get<wbr />Spec</a>
+              </li>
+              <li class=" tsd-kind-function root">
+                <a href="globals.html#isvalid" class="tsd-kind-icon">is<wbr />Valid</a>
+              </li>
+              <li class=" tsd-kind-function root">
+                <a href="globals.html#keys" class="tsd-kind-icon">keys</a>
+              </li>
+              <li class=" tsd-kind-function root">
+                <a href="globals.html#optional" class="tsd-kind-icon">optional</a>
+              </li>
+              <li class=" tsd-kind-function root">
+                <a href="globals.html#or" class="tsd-kind-icon">or</a>
+              </li>
+              <li class=" tsd-kind-function root">
+                <a href="globals.html#pred" class="tsd-kind-icon">pred</a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+    <footer class="with-border-bottom"></footer>
+    <div class="container tsd-generator">
+      <p>Generated using <a href="http://typedoc.org/" target="_blank">TypeDoc</a></p>
+    </div>
+    <div class="overlay"></div>
+    <script src="assets/js/main.js"></script>
+    <script>
+      if (location.protocol == 'file:')
+        document.write('<script src="assets/js/search.js"><' + '/script>');
+    </script>
+  </body>
+</html>

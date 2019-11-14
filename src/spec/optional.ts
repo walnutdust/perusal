@@ -2,7 +2,7 @@ import Spec from './spec';
 import {invalid} from '../control';
 import invariant from 'tiny-invariant';
 
-/** @module specjs/spec */
+/** @module perusal/spec */
 
 /**
  * Class representing `Optional` specs, which either accepts an undefined value or
@@ -13,13 +13,13 @@ import invariant from 'tiny-invariant';
 export default class Optional extends Spec {
   /**
    * Asserts this spec on a given value. Returns the value if value passes spec,
-   * returns `specjs.invalid` otherwise.
+   * returns `perusal.invalid` otherwise.
    *
    * @param {any} value - The value to be asserted.
    * @return {invalid|any} Returns the value if value passes spec, returns
-   * specjs.invalid otherwise.
+   * perusal.invalid otherwise.
    */
-  assert(value: any) {
+  assert(value: any): any {
     if (value === undefined) return value;
 
     const result = this.options.assert(value);
@@ -36,7 +36,7 @@ export default class Optional extends Spec {
    * @return {boolean} Returns true if the value satisfies this spec, false
    * otherwise.
    */
-  explain(value: any, path: string[]) {
+  explain(value: any, path: string[]): boolean {
     if (value === undefined) return true;
 
     return this.options.explain(value, path);
@@ -50,7 +50,11 @@ export default class Optional extends Spec {
  * @return {Optional} Returns a `Optional` spec requiring the input value to satisfy
  * the provided spec if it is defined.
  */
-export const optional = (spec: Spec) => {
-  invariant(spec instanceof Spec, 'Invalid specification passed to specjs.optional');
+export function optional(spec: Spec): Optional {
+  invariant(spec instanceof Spec, 'Invalid specification passed to perusal.optional');
+  invariant(
+    arguments.length === 1,
+    'perusal.optional was called with invalid number of arguments.'
+  );
   return new Optional('optional', spec);
-};
+}

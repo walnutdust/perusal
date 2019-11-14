@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "target": "es2015",
+    "target": "es6",
     "moduleResolution": "node",
     "module": "commonjs",
     "declaration": true,
@@ -17,10 +17,14 @@
     "outDir": "dist/",
     "baseUrl": "src/",
     "listFiles": false,
-    "lib": ["es2017", "dom"],
+    "lib": ["es6", "dom"],
     "noEmitHelpers": true
   },
-  "include": ["src", "example.ts"],
+  "include": ["src"],
   "exclude": ["node_modules"],
-  "compileOnSave": false
+  "compileOnSave": false,
+  "typedocOptions": {
+    "mode": "file",
+    "out": "docs"
+  }
 }

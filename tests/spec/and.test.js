@@ -1,16 +1,19 @@
 import {expect} from 'chai';
-import {and, Spec, assert} from '../../lib/utils';
-import {even, odd, isNumber} from '../../lib/preds';
-import {invalid} from '../../lib/control';
+import {and, Spec, even, odd, isNumber, invalid} from '../../cjs/index';
 import {suspendConsole, restoreConsole} from '../testing-utils';
+import sinon from 'sinon';
 
 describe('and', function() {
   beforeEach(suspendConsole);
   afterEach(restoreConsole);
 
   describe('constructor', function() {
+    it('throws an error on invaid name', function() {
+      expect(() => and(2, even)).to.throw(Error);
+    });
+
     it('throws an error on [non-Spec spec]', function() {
-      expect(() => and('non-Spec')).to.throw(Error);
+      expect(() => and('non-Spec', 'non-Spec')).to.throw(Error);
     });
 
     it('passes with one Spec input', function() {
@@ -24,21 +27,27 @@ describe('and', function() {
 
   describe('assert', function() {
     it('returns the value if value passes', function() {
-      expect(assert(12, and('is even number?', isNumber, even))).to.eq(12);
+      expect(and('is even number?', isNumber, even).assert(12)).to.eq(12);
     });
 
     it('returns invalid if value fails', function() {
-      expect(assert(12, and('is odd number?', isNumber, odd))).to.eq(invalid);
+      expect(and('is even number?', isNumber, even).assert(11)).to.eq(invalid);
     });
   });
 
   describe('explain', function() {
     it('returns true and logs nothing if correct', function() {
+      let spy = sinon.spy(console, 'log');
       expect(and('is even number?', isNumber, even).explain(12, [])).to.eq(true);
+      expect(spy.called).to.be.false;
+      spy.restore();
     });
 
     it('returns false and logs error if spec fails', function() {
+      let spy = sinon.spy(console, 'log');
       expect(and('is odd number?', isNumber, odd).explain(12, ['path'])).to.eq(false);
+      expect(spy.called).to.be.true;
+      spy.restore();
     });
   });
 });
