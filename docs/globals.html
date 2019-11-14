@@ -79,7 +79,16 @@
                       <a href="classes/and.html" class="tsd-kind-icon">And</a>
                     </li>
                     <li class="tsd-kind-class tsd-is-private tsd-is-not-exported">
+                      <a href="classes/every.html" class="tsd-kind-icon">Every</a>
+                    </li>
+                    <li class="tsd-kind-class tsd-is-private tsd-is-not-exported">
                       <a href="classes/keys.html" class="tsd-kind-icon">Keys</a>
+                    </li>
+                    <li class="tsd-kind-class tsd-is-private">
+                      <a href="classes/nullable.html" class="tsd-kind-icon">Nullable</a>
+                    </li>
+                    <li class="tsd-kind-class tsd-is-private">
+                      <a href="classes/oneof.html" class="tsd-kind-icon">OneOf</a>
                     </li>
                     <li class="tsd-kind-class tsd-is-private">
                       <a href="classes/optional.html" class="tsd-kind-icon">Optional</a>
@@ -152,6 +161,9 @@
                       <a href="globals.html#define" class="tsd-kind-icon">define</a>
                     </li>
                     <li class="tsd-kind-function">
+                      <a href="globals.html#every" class="tsd-kind-icon">every</a>
+                    </li>
+                    <li class="tsd-kind-function">
                       <a href="globals.html#explain" class="tsd-kind-icon">explain</a>
                     </li>
                     <li class="tsd-kind-function">
@@ -167,6 +179,12 @@
                     </li>
                     <li class="tsd-kind-function">
                       <a href="globals.html#keys" class="tsd-kind-icon">keys</a>
+                    </li>
+                    <li class="tsd-kind-function">
+                      <a href="globals.html#nullable" class="tsd-kind-icon">nullable</a>
+                    </li>
+                    <li class="tsd-kind-function">
+                      <a href="globals.html#oneof" class="tsd-kind-icon">oneOf</a>
                     </li>
                     <li class="tsd-kind-function">
                       <a href="globals.html#optional" class="tsd-kind-icon">optional</a>
@@ -570,7 +588,7 @@
                 <li class="tsd-description">
                   <aside class="tsd-sources">
                     <ul>
-                      <li>Defined in utils.ts:25</li>
+                      <li>Defined in utils.ts:29</li>
                     </ul>
                   </aside>
                   <div class="tsd-comment tsd-typography tsd-comment-shorttext">
@@ -596,17 +614,20 @@
                         ><span class="tsd-signature-type">string</span>
                       </h5>
                       <div class="tsd-comment tsd-typography tsd-comment-text">
-                        <p>The spec to be used.</p>
+                        <p>The spec to be used. &lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</p>
                       </div>
                     </li>
                   </ul>
                   <h4 class="tsd-returns-title">
                     Returns <span class="tsd-signature-type">any</span>
                   </h4>
-                  <p>
-                    Returns the value if value passes specification, returns perusal.invalid
-                    otherwise.
-                  </p>
+                  <a
+                    href="#returns-the-value-if-value-passes-specification-returns"
+                    id="returns-the-value-if-value-passes-specification-returns"
+                    style="color: inherit; text-decoration: none;"
+                  >
+                    <h1>Returns the value if value passes specification, returns</h1>
+                  </a>
                 </li>
               </ul>
             </section>
@@ -631,7 +652,7 @@
                 <li class="tsd-description">
                   <aside class="tsd-sources">
                     <ul>
-                      <li>Defined in utils.ts:116</li>
+                      <li>Defined in utils.ts:120</li>
                     </ul>
                   </aside>
                   <div class="tsd-comment tsd-typography tsd-comment-shorttext">
@@ -661,6 +682,63 @@
               </ul>
             </section>
             <section class="tsd-panel tsd-member tsd-kind-function">
+              <a name="every" class="tsd-anchor"></a>
+              <h3>every</h3>
+              <ul class="tsd-signatures tsd-kind-function">
+                <li class="tsd-signature tsd-kind-icon">
+                  every<span class="tsd-signature-symbol">(</span>name<span
+                    class="tsd-signature-symbol"
+                    >: </span
+                  ><span class="tsd-signature-type">string</span>, spec<span
+                    class="tsd-signature-symbol"
+                    >: </span
+                  ><a href="classes/spec.html" class="tsd-signature-type">Spec</a
+                  ><span class="tsd-signature-symbol">)</span
+                  ><span class="tsd-signature-symbol">: </span
+                  ><a href="classes/every.html" class="tsd-signature-type">Every</a>
+                </li>
+              </ul>
+              <ul class="tsd-descriptions">
+                <li class="tsd-description">
+                  <aside class="tsd-sources">
+                    <ul>
+                      <li>Defined in spec/every.ts:72</li>
+                    </ul>
+                  </aside>
+                  <div class="tsd-comment tsd-typography tsd-comment-shorttext">
+                    <div class="lead">
+                      <p>Factory function for <code>Every</code> specs.</p>
+                    </div>
+                  </div>
+                  <h4 class="tsd-parameters-title">Parameters</h4>
+                  <ul class="tsd-parameters">
+                    <li>
+                      <h5>name: <span class="tsd-signature-type">string</span></h5>
+                      <div class="tsd-comment tsd-typography tsd-comment-text">
+                        <p>
+                          Name of the every spec. Important to set this to a human readable
+                          (meaningful) string, since this is what will get printed out in explain.
+                        </p>
+                      </div>
+                    </li>
+                    <li>
+                      <h5>spec: <a href="classes/spec.html" class="tsd-signature-type">Spec</a></h5>
+                      <div class="tsd-comment tsd-typography tsd-comment-text">
+                        <p>Specs that have all to be satisfied to fulfill this spec.</p>
+                      </div>
+                    </li>
+                  </ul>
+                  <h4 class="tsd-returns-title">
+                    Returns <a href="classes/every.html" class="tsd-signature-type">Every</a>
+                  </h4>
+                  <p>
+                    Returns an <code>Every</code> spec representing that all elements in the
+                    collection have to satisfy the provided spec..
+                  </p>
+                </li>
+              </ul>
+            </section>
+            <section class="tsd-panel tsd-member tsd-kind-function">
               <a name="explain" class="tsd-anchor"></a>
               <h3>explain</h3>
               <ul class="tsd-signatures tsd-kind-function">
@@ -683,7 +761,7 @@
                 <li class="tsd-description">
                   <aside class="tsd-sources">
                     <ul>
-                      <li>Defined in utils.ts:65</li>
+                      <li>Defined in utils.ts:69</li>
                     </ul>
                   </aside>
                   <div class="tsd-comment tsd-typography tsd-comment-shorttext">
@@ -739,7 +817,7 @@
                 <li class="tsd-description">
                   <aside class="tsd-sources">
                     <ul>
-                      <li>Defined in utils.ts:93</li>
+                      <li>Defined in utils.ts:97</li>
                     </ul>
                   </aside>
                   <div class="tsd-comment tsd-typography tsd-comment-shorttext">
@@ -796,7 +874,7 @@
                 <li class="tsd-description">
                   <aside class="tsd-sources">
                     <ul>
-                      <li>Defined in utils.ts:129</li>
+                      <li>Defined in utils.ts:133</li>
                     </ul>
                   </aside>
                   <div class="tsd-comment tsd-typography tsd-comment-shorttext">
@@ -849,7 +927,7 @@
                 <li class="tsd-description">
                   <aside class="tsd-sources">
                     <ul>
-                      <li>Defined in utils.ts:49</li>
+                      <li>Defined in utils.ts:53</li>
                     </ul>
                   </aside>
                   <div class="tsd-comment tsd-typography tsd-comment-shorttext">
@@ -885,7 +963,7 @@
             </section>
             <section class="tsd-panel tsd-member tsd-kind-function">
               <a name="keys" class="tsd-anchor"></a>
-              <h3><span class="tsd-flag ts-flagConst">Const</span> keys</h3>
+              <h3>keys</h3>
               <ul class="tsd-signatures tsd-kind-function">
                 <li class="tsd-signature tsd-kind-icon">
                   keys<span class="tsd-signature-symbol">(</span>name<span
@@ -904,7 +982,7 @@
                 <li class="tsd-description">
                   <aside class="tsd-sources">
                     <ul>
-                      <li>Defined in spec/keys.ts:69</li>
+                      <li>Defined in spec/keys.ts:70</li>
                     </ul>
                   </aside>
                   <div class="tsd-comment tsd-typography tsd-comment-shorttext">
@@ -916,21 +994,17 @@
                   <ul class="tsd-parameters">
                     <li>
                       <h5>name: <span class="tsd-signature-type">string</span></h5>
-                      <div class="tsd-comment tsd-typography tsd-comment-shorttext">
-                        <div class="lead">
-                          <p>
-                            Name of the key spec. Important to set this to a human readable
-                            (meaningful) string, since this is what will get printed out in explain.
-                          </p>
-                        </div>
+                      <div class="tsd-comment tsd-typography tsd-comment-text">
+                        <p>
+                          Name of the key spec. Important to set this to a human readable
+                          (meaningful) string, since this is what will get printed out in explain.
+                        </p>
                       </div>
                     </li>
                     <li>
                       <h5>specs: <span class="tsd-signature-type">object</span></h5>
-                      <div class="tsd-comment tsd-typography tsd-comment-shorttext">
-                        <div class="lead">
-                          <p>Specs that have all to be satisfied to fulfill this spec.</p>
-                        </div>
+                      <div class="tsd-comment tsd-typography tsd-comment-text">
+                        <p>Specs that have all to be satisfied to fulfill this spec.</p>
                       </div>
                       <ul class="tsd-parameters">
                         <li class="tsd-parameter-index-signature">
@@ -955,8 +1029,120 @@
               </ul>
             </section>
             <section class="tsd-panel tsd-member tsd-kind-function">
+              <a name="nullable" class="tsd-anchor"></a>
+              <h3>nullable</h3>
+              <ul class="tsd-signatures tsd-kind-function">
+                <li class="tsd-signature tsd-kind-icon">
+                  nullable<span class="tsd-signature-symbol">(</span>spec<span
+                    class="tsd-signature-symbol"
+                    >: </span
+                  ><a href="classes/spec.html" class="tsd-signature-type">Spec</a
+                  ><span class="tsd-signature-symbol">)</span
+                  ><span class="tsd-signature-symbol">: </span
+                  ><a href="classes/nullable.html" class="tsd-signature-type">Nullable</a>
+                </li>
+              </ul>
+              <ul class="tsd-descriptions">
+                <li class="tsd-description">
+                  <aside class="tsd-sources">
+                    <ul>
+                      <li>Defined in spec/nullable.ts:52</li>
+                    </ul>
+                  </aside>
+                  <div class="tsd-comment tsd-typography tsd-comment-shorttext">
+                    <div class="lead">
+                      <p>Factory function for <code>Nullable</code> specs.</p>
+                    </div>
+                  </div>
+                  <h4 class="tsd-parameters-title">Parameters</h4>
+                  <ul class="tsd-parameters">
+                    <li>
+                      <h5>spec: <a href="classes/spec.html" class="tsd-signature-type">Spec</a></h5>
+                      <div class="tsd-comment tsd-typography tsd-comment-text">
+                        <p>Spec that has to be fulfiled if input value is not undefined.</p>
+                      </div>
+                    </li>
+                  </ul>
+                  <h4 class="tsd-returns-title">
+                    Returns <a href="classes/nullable.html" class="tsd-signature-type">Nullable</a>
+                  </h4>
+                  <p>
+                    Returns a <code>Nullable</code> spec requiring the input value to satisfy the
+                    provided spec if it is not null.
+                  </p>
+                </li>
+              </ul>
+            </section>
+            <section class="tsd-panel tsd-member tsd-kind-function">
+              <a name="oneof" class="tsd-anchor"></a>
+              <h3>one<wbr />Of</h3>
+              <ul class="tsd-signatures tsd-kind-function">
+                <li class="tsd-signature tsd-kind-icon">
+                  one<wbr />Of<span class="tsd-signature-symbol">(</span>name<span
+                    class="tsd-signature-symbol"
+                    >: </span
+                  ><span class="tsd-signature-type">string</span>,
+                  <span class="tsd-signature-symbol">...</span>values<span
+                    class="tsd-signature-symbol"
+                    >: </span
+                  ><span class="tsd-signature-type">any</span
+                  ><span class="tsd-signature-symbol">[]</span
+                  ><span class="tsd-signature-symbol">)</span
+                  ><span class="tsd-signature-symbol">: </span
+                  ><a href="classes/oneof.html" class="tsd-signature-type">OneOf</a>
+                </li>
+              </ul>
+              <ul class="tsd-descriptions">
+                <li class="tsd-description">
+                  <aside class="tsd-sources">
+                    <ul>
+                      <li>Defined in spec/oneOf.ts:70</li>
+                    </ul>
+                  </aside>
+                  <div class="tsd-comment tsd-typography tsd-comment-shorttext">
+                    <div class="lead">
+                      <p>
+                        Factory function for <code>OneOf</code> specs. Consider using the spread
+                        operator if you start with a collection!
+                      </p>
+                    </div>
+                  </div>
+                  <h4 class="tsd-parameters-title">Parameters</h4>
+                  <ul class="tsd-parameters">
+                    <li>
+                      <h5>name: <span class="tsd-signature-type">string</span></h5>
+                      <div class="tsd-comment tsd-typography tsd-comment-text">
+                        <p>
+                          Name of the and spec. Important to set this to a human readable
+                          (meaningful) string, since this is what will get printed out in explain.
+                        </p>
+                      </div>
+                    </li>
+                    <li>
+                      <h5>
+                        <span class="tsd-flag ts-flagRest">Rest</span>
+                        <span class="tsd-signature-symbol">...</span>values:
+                        <span class="tsd-signature-type">any</span
+                        ><span class="tsd-signature-symbol">[]</span>
+                      </h5>
+                      <div class="tsd-comment tsd-typography tsd-comment-text">
+                        <p>user-defined values used to assert future values.</p>
+                      </div>
+                    </li>
+                  </ul>
+                  <h4 class="tsd-returns-title">
+                    Returns <a href="classes/oneof.html" class="tsd-signature-type">OneOf</a>
+                  </h4>
+                  <p>
+                    Returns a <code>OneOf</code> spec requiring the input value to be within one of
+                    the user pre-defined values.
+                  </p>
+                </li>
+              </ul>
+            </section>
+            <section class="tsd-panel tsd-member tsd-kind-function">
               <a name="optional" class="tsd-anchor"></a>
-              <h3><span class="tsd-flag ts-flagConst">Const</span> optional</h3>
+              <h3>optional</h3>
               <ul class="tsd-signatures tsd-kind-function">
                 <li class="tsd-signature tsd-kind-icon">
                   optional<span class="tsd-signature-symbol">(</span>spec<span
@@ -984,10 +1170,8 @@
                   <ul class="tsd-parameters">
                     <li>
                       <h5>spec: <a href="classes/spec.html" class="tsd-signature-type">Spec</a></h5>
-                      <div class="tsd-comment tsd-typography tsd-comment-shorttext">
-                        <div class="lead">
-                          <p>Spec that has to be fulfiled if input value is not undefined.</p>
-                        </div>
+                      <div class="tsd-comment tsd-typography tsd-comment-text">
+                        <p>Spec that has to be fulfiled if input value is not undefined.</p>
                       </div>
                     </li>
                   </ul>
@@ -1003,7 +1187,7 @@
             </section>
             <section class="tsd-panel tsd-member tsd-kind-function">
               <a name="or" class="tsd-anchor"></a>
-              <h3><span class="tsd-flag ts-flagConst">Const</span> or</h3>
+              <h3>or</h3>
               <ul class="tsd-signatures tsd-kind-function">
                 <li class="tsd-signature tsd-kind-icon">
                   or<span class="tsd-signature-symbol">(</span>name<span
@@ -1036,13 +1220,11 @@
                   <ul class="tsd-parameters">
                     <li>
                       <h5>name: <span class="tsd-signature-type">string</span></h5>
-                      <div class="tsd-comment tsd-typography tsd-comment-shorttext">
-                        <div class="lead">
-                          <p>
-                            Name of the and spec. Important to set this to a human readable
-                            (meaningful) string, since this is what will get printed out in explain.
-                          </p>
-                        </div>
+                      <div class="tsd-comment tsd-typography tsd-comment-text">
+                        <p>
+                          Name of the and spec. Important to set this to a human readable
+                          (meaningful) string, since this is what will get printed out in explain.
+                        </p>
                       </div>
                     </li>
                     <li>
@@ -1052,10 +1234,8 @@
                         <a href="classes/spec.html" class="tsd-signature-type">Spec</a
                         ><span class="tsd-signature-symbol">[]</span>
                       </h5>
-                      <div class="tsd-comment tsd-typography tsd-comment-shorttext">
-                        <div class="lead">
-                          <p>Specs, where one of them has to be satisfied to fulfill this spec.</p>
-                        </div>
+                      <div class="tsd-comment tsd-typography tsd-comment-text">
+                        <p>Specs, where one of them has to be satisfied to fulfill this spec.</p>
                       </div>
                     </li>
                   </ul>
@@ -1070,7 +1250,7 @@
             </section>
             <section class="tsd-panel tsd-member tsd-kind-function">
               <a name="pred" class="tsd-anchor"></a>
-              <h3><span class="tsd-flag ts-flagConst">Const</span> pred</h3>
+              <h3>pred</h3>
               <ul class="tsd-signatures tsd-kind-function">
                 <li class="tsd-signature tsd-kind-icon">
                   pred<span class="tsd-signature-symbol">(</span>name<span
@@ -1089,7 +1269,7 @@
                 <li class="tsd-description">
                   <aside class="tsd-sources">
                     <ul>
-                      <li>Defined in spec/pred.ts:74</li>
+                      <li>Defined in spec/pred.ts:77</li>
                     </ul>
                   </aside>
                   <div class="tsd-comment tsd-typography tsd-comment-shorttext">
@@ -1102,29 +1282,45 @@
                         output be detected, assert throws an error, which may help in debugging.
                       </p>
                     </div>
+                    <dl class="tsd-comment-tags">
+                      <dt>throws</dt>
+                      <dd>
+                        <p>
+                          Throws an error if name is not a valid string or fn is not a valid
+                          function.
+                        </p>
+                      </dd>
+                    </dl>
+                  </div>
+                  <div class="tsd-comment tsd-typography tsd-comment-tags">
+                    <dl class="tsd-comment-tags">
+                      <dt>throws</dt>
+                      <dd>
+                        <p>
+                          Throws an error if name is not a valid string or fn is not a valid
+                          function.
+                        </p>
+                      </dd>
+                    </dl>
                   </div>
                   <h4 class="tsd-parameters-title">Parameters</h4>
                   <ul class="tsd-parameters">
                     <li>
                       <h5>name: <span class="tsd-signature-type">string</span></h5>
-                      <div class="tsd-comment tsd-typography tsd-comment-shorttext">
-                        <div class="lead">
-                          <p>
-                            Name of the key spec. Important to set this to a human readable
-                            (meaningful) string, since this is what will get printed out in explain.
-                          </p>
-                        </div>
+                      <div class="tsd-comment tsd-typography tsd-comment-text">
+                        <p>
+                          Name of the key spec. Important to set this to a human readable
+                          (meaningful) string, since this is what will get printed out in explain.
+                        </p>
                       </div>
                     </li>
                     <li>
                       <h5>fn: <span class="tsd-signature-type">function</span></h5>
-                      <div class="tsd-comment tsd-typography tsd-comment-shorttext">
-                        <div class="lead">
-                          <p>
-                            Predicate function that returns a boolean value on input within
-                            user-desired domain.
-                          </p>
-                        </div>
+                      <div class="tsd-comment tsd-typography tsd-comment-text">
+                        <p>
+                          Predicate function that returns a boolean value on input within
+                          user-desired domain.
+                        </p>
                       </div>
                       <ul class="tsd-parameters">
                         <li class="tsd-parameter-siganture">
@@ -1176,7 +1372,16 @@
                 <a href="classes/and.html" class="tsd-kind-icon">And</a>
               </li>
               <li class=" tsd-kind-class tsd-is-private tsd-is-not-exported root">
+                <a href="classes/every.html" class="tsd-kind-icon">Every</a>
+              </li>
+              <li class=" tsd-kind-class tsd-is-private tsd-is-not-exported root">
                 <a href="classes/keys.html" class="tsd-kind-icon">Keys</a>
+              </li>
+              <li class=" tsd-kind-class tsd-is-private root">
+                <a href="classes/nullable.html" class="tsd-kind-icon">Nullable</a>
+              </li>
+              <li class=" tsd-kind-class tsd-is-private root">
+                <a href="classes/oneof.html" class="tsd-kind-icon">One<wbr />Of</a>
               </li>
               <li class=" tsd-kind-class tsd-is-private root">
                 <a href="classes/optional.html" class="tsd-kind-icon">Optional</a>
@@ -1239,6 +1444,9 @@
                 <a href="globals.html#define" class="tsd-kind-icon">define</a>
               </li>
               <li class=" tsd-kind-function root">
+                <a href="globals.html#every" class="tsd-kind-icon">every</a>
+              </li>
+              <li class=" tsd-kind-function root">
                 <a href="globals.html#explain" class="tsd-kind-icon">explain</a>
               </li>
               <li class=" tsd-kind-function root">
@@ -1254,6 +1462,12 @@
               </li>
               <li class=" tsd-kind-function root">
                 <a href="globals.html#keys" class="tsd-kind-icon">keys</a>
+              </li>
+              <li class=" tsd-kind-function root">
+                <a href="globals.html#nullable" class="tsd-kind-icon">nullable</a>
+              </li>
+              <li class=" tsd-kind-function root">
+                <a href="globals.html#oneof" class="tsd-kind-icon">one<wbr />Of</a>
               </li>
               <li class=" tsd-kind-function root">
                 <a href="globals.html#optional" class="tsd-kind-icon">optional</a>

@@ -84,16 +84,14 @@
               A specification system (spec) ensures that data that is passed in conforms to the
               requirements.
             </p>
-            <blockquote>
-              <p>
-                <code>perusal</code> implements a performant spec system for Javascript - users can
-                define custom specifications, and verify that data satisfies the provided
-                specification. Pairs well with
-                <a href="https://immutable-js.github.io/immutable-js/">Immutable.js</a> to improve
-                speed by retaining metadata on the passing/failing specs - activate this by using
-                <code>perusal</code> instead!
-              </p>
-            </blockquote>
+            <p>
+              <code>perusal</code> implements a performant spec system for Javascript - users can
+              define custom specifications, and verify that data satisfies the provided
+              specification. Pairs well with
+              <a href="https://immutable-js.github.io/immutable-js/">Immutable.js</a> to improve
+              speed by retaining metadata on the passing/failing specs - activate this by using
+              <code>perusal-immutable</code> instead!
+            </p>
             <p>
               Inspired by Clojure&#39;s <a href="https://clojure.org/guides/spec">spec/alpha</a>.
             </p>
@@ -123,7 +121,7 @@ isValid(<span class="hljs-number">-2</span>, <span class="hljs-string">'pos-even
   <span class="hljs-attr">y</span>: <span class="hljs-number">2</span>,
 };
 
-<span class="hljs-comment">// Note that this uses perusal</span>
+<span class="hljs-comment">// Note that this uses perusal-immutable</span>
 <span class="hljs-keyword">const</span> threeDpoint = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Map</span>({
   <span class="hljs-attr">x</span>: <span class="hljs-number">1</span>,
   <span class="hljs-attr">y</span>: <span class="hljs-number">2</span>,
@@ -371,8 +369,7 @@ define(<span class="hljs-string">'2-nested point'</span>, keys(<span class="hljs
 }));
 isValid(nestedPoint, <span class="hljs-string">'2-nested point'</span>); <span class="hljs-comment">// true</span>
 
-
-<span class="hljs-comment">// Note that this uses perusal</span>
+<span class="hljs-comment">// Note that this uses perusal-immutable</span>
 <span class="hljs-comment">// A good way to capture the same behavior is via the immutable from JS method.</span>
 <span class="hljs-keyword">const</span> nestedPoint2 = fromJS({
   <span class="hljs-attr">x</span>: {
@@ -383,10 +380,9 @@ isValid(nestedPoint, <span class="hljs-string">'2-nested point'</span>); <span c
   },
 });
 
-
 isValid(nestedPoint2, <span class="hljs-string">'2-nested point'</span>); <span class="hljs-comment">// true</span>
 
-<span class="hljs-comment">// Note that this uses perusal</span>
+<span class="hljs-comment">// Note that this uses perusal-immutable</span>
 <span class="hljs-comment">// This works with normal JS Maps as well.</span>
 <span class="hljs-keyword">const</span> nestedPoint3 = {
   <span class="hljs-attr">x</span>: {
@@ -419,7 +415,7 @@ end = performance.now();
 );
 <span class="hljs-comment">/* Test 1: Time taken to perform 10000000 validity checks on the JS Map is 5441.707319021225ms, averaging 0.0005441707319021225ms. */</span>
 
-<span class="hljs-comment">// This uses perusal</span>
+<span class="hljs-comment">// This uses perusal-immutable</span>
 <span class="hljs-comment">// Test 2: fromJS (immutableJS) Map</span>
 start = performance.now();
 <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; numTimes; i++) {
@@ -437,7 +433,7 @@ end = performance.now();
 );
 <span class="hljs-comment">/* Test 2: Test 2: Time taken to perform 10000000 validity checks on the fromJS Map is 1474.4121170043945ms, averaging 0.00014744121170043946ms. */</span>
 
-<span class="hljs-comment">// This uses perusal</span>
+<span class="hljs-comment">// This uses perusal-immutable</span>
 <span class="hljs-comment">// Test 3: immutableJS Map</span>
 start = performance.now();
 <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; numTimes; i++) {
@@ -571,7 +567,16 @@ end = performance.now();
                 <a href="classes/and.html" class="tsd-kind-icon">And</a>
               </li>
               <li class=" tsd-kind-class tsd-is-private tsd-is-not-exported root">
+                <a href="classes/every.html" class="tsd-kind-icon">Every</a>
+              </li>
+              <li class=" tsd-kind-class tsd-is-private tsd-is-not-exported root">
                 <a href="classes/keys.html" class="tsd-kind-icon">Keys</a>
+              </li>
+              <li class=" tsd-kind-class tsd-is-private root">
+                <a href="classes/nullable.html" class="tsd-kind-icon">Nullable</a>
+              </li>
+              <li class=" tsd-kind-class tsd-is-private root">
+                <a href="classes/oneof.html" class="tsd-kind-icon">One<wbr />Of</a>
               </li>
               <li class=" tsd-kind-class tsd-is-private root">
                 <a href="classes/optional.html" class="tsd-kind-icon">Optional</a>
@@ -634,6 +639,9 @@ end = performance.now();
                 <a href="globals.html#define" class="tsd-kind-icon">define</a>
               </li>
               <li class=" tsd-kind-function root">
+                <a href="globals.html#every" class="tsd-kind-icon">every</a>
+              </li>
+              <li class=" tsd-kind-function root">
                 <a href="globals.html#explain" class="tsd-kind-icon">explain</a>
               </li>
               <li class=" tsd-kind-function root">
@@ -649,6 +657,12 @@ end = performance.now();
               </li>
               <li class=" tsd-kind-function root">
                 <a href="globals.html#keys" class="tsd-kind-icon">keys</a>
+              </li>
+              <li class=" tsd-kind-function root">
+                <a href="globals.html#nullable" class="tsd-kind-icon">nullable</a>
+              </li>
+              <li class=" tsd-kind-function root">
+                <a href="globals.html#oneof" class="tsd-kind-icon">one<wbr />Of</a>
               </li>
               <li class=" tsd-kind-function root">
                 <a href="globals.html#optional" class="tsd-kind-icon">optional</a>

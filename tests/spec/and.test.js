@@ -1,5 +1,11 @@
 import {expect} from 'chai';
+<<<<<<< HEAD
 import {and, Spec, even, odd, isNumber, invalid} from '../../cjs/index';
+=======
+import {and, Spec, assert} from '../../cjs/utils';
+import {even, odd, isNumber} from '../../cjs/preds';
+import {invalid} from '../../cjs/control';
+>>>>>>> 20f47204e97bc8257b5b72d8a82b36fd1842463f
 import {suspendConsole, restoreConsole} from '../testing-utils';
 import sinon from 'sinon';
 

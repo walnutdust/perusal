@@ -76,7 +76,11 @@ var defs = {};
  *
  * @param {any} value - The value to be asserted.
  * @param {Spec | string} spec - The spec to be used.
+<<<<<<< HEAD
  * @return {any} Returns the value if value passes specification, returns
+=======
+ * @return {invalid|any} Returns the value if value passes specification, returns
+>>>>>>> 20f47204e97bc8257b5b72d8a82b36fd1842463f
  * perusal.invalid otherwise.
  */
 
