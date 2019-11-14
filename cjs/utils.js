@@ -72,19 +72,19 @@ function _interopRequireDefault(obj) {
 var defs = {};
 /**
  * Asserts a spec on a given value. Returns the value if value passes specification,
- * returns `perusal-immutable.invalid` otherwise.
+ * returns `perusal.invalid` otherwise.
  *
  * @param {any} value - The value to be asserted.
  * @param {Spec | string} spec - The spec to be used.
- * @return {invalid|any} Returns the value if value passes specification, returns
- * perusal-immutable.invalid otherwise.
+ * @return {any} Returns the value if value passes specification, returns
+ * perusal.invalid otherwise.
  */
 
 function assert(value, spec) {
   // getSpec allows us to pass it strings to retrive previously defined specs.
   (0, _tinyInvariant['default'])(
     typeof spec === 'string' || spec instanceof _spec['default'],
-    'Invalid spec '.concat(spec, ' passed to perusal-immutable.assert.')
+    'Invalid spec '.concat(spec, ' passed to perusal.assert.')
   );
   var specification = getSpec(spec); // If the value was previous asserted with this specification, simply return the
   // previous result.
@@ -105,7 +105,7 @@ function isValid(value, spec) {
   // Error checking/throwing here to provide more helpful error messages.
   (0, _tinyInvariant['default'])(
     typeof spec === 'string' || spec instanceof _spec['default'],
-    'Invalid specification '.concat(spec, ' passed to perusal-immutable.isValid.')
+    'Invalid specification '.concat(spec, ' passed to perusal.isValid.')
   );
   return assert(value, spec) !== _control.invalid;
 }
@@ -119,7 +119,7 @@ function isValid(value, spec) {
 function explain(value, spec) {
   (0, _tinyInvariant['default'])(
     typeof spec === 'string' || spec instanceof _spec['default'],
-    'Invalid specification '.concat(spec, ' passed to perusal-immutable.explain.')
+    'Invalid specification '.concat(spec, ' passed to perusal.explain.')
   );
   var specification = getSpec(spec);
 
@@ -146,7 +146,7 @@ function explain(value, spec) {
 function explainIfInvalid(value, spec) {
   (0, _tinyInvariant['default'])(
     typeof spec === 'string' || spec instanceof _spec['default'],
-    'Invalid specification '.concat(spec, ' passed to perusal-immutable.explainIfInvalid.')
+    'Invalid specification '.concat(spec, ' passed to perusal.explainIfInvalid.')
   );
   var specification = getSpec(spec);
 
@@ -173,7 +173,7 @@ function define(name, spec) {
   (0, _tinyInvariant['default'])(!defs[name], 'Specfication for '.concat(name, ' already exists!'));
   (0, _tinyInvariant['default'])(
     spec instanceof _spec['default'],
-    'perusal-immutable.define called with invalid spec.'
+    'perusal.define called with invalid spec.'
   );
   defs[name] = spec;
 }

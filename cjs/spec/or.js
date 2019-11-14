@@ -3,7 +3,7 @@
 Object.defineProperty(exports, '__esModule', {
   value: true,
 });
-exports.or = void 0;
+exports.or = or;
 
 var _spec2 = _interopRequireDefault(require('./spec'));
 
@@ -125,7 +125,7 @@ var Or =
          * returns `perusal.invalid` otherwise.
          *
          * @param {any} value - The value to be asserted.
-         * @return {invalid|any} Returns the value if value passes spec, returns
+         * @return {any} Returns the value if value passes spec, returns
          * perusal.invalid otherwise.
          */
         value: function assert(value) {
@@ -251,10 +251,10 @@ var Or =
  * readable (meaningful) string, since this is what will get printed out in explain.
  * @param {...Spec} specs - Specs, where one of them has to be satisfied to fulfill
  * this spec.
- * @return {And} Returns an `Or` spec representing the disjunction of the given specs.
+ * @return {Or} Returns an `Or` spec representing the disjunction of the given specs.
  */
 
-var or = function or(name) {
+function or(name) {
   (0, _tinyInvariant['default'])(
     typeof name === 'string',
     'perusal.or was called with an invalid name.'
@@ -279,6 +279,4 @@ var or = function or(name) {
   }
 
   return new Or(name, specs);
-};
-
-exports.or = or;
+}

@@ -4,7 +4,7 @@
 
 A specification system (spec) ensures that data that is passed in conforms to the requirements.
 
-> `perusal` implements a performant spec system for Javascript - users can define custom specifications, and verify that data satisfies the provided specification. Pairs well with [Immutable.js](https://immutable-js.github.io/immutable-js/) to improve speed by retaining metadata on the passing/failing specs - activate this by using `perusal-immutable` instead!
+> `perusal` implements a performant spec system for Javascript - users can define custom specifications, and verify that data satisfies the provided specification. Pairs well with [Immutable.js](https://immutable-js.github.io/immutable-js/) to improve speed by retaining metadata on the passing/failing specs - activate this by using `perusal` instead!
 
 Inspired by Clojure's [spec/alpha](https://clojure.org/guides/spec).
 
@@ -34,7 +34,7 @@ const point = {
   y: 2,
 };
 
-// Note that this uses perusal-immutable
+// Note that this uses perusal
 const threeDpoint = new Map({
   x: 1,
   y: 2,
@@ -170,8 +170,7 @@ define('2-nested point', keys('nested nested point', {
 }));
 isValid(nestedPoint, '2-nested point'); // true
 
-
-// Note that this uses perusal-immutable
+// Note that this uses perusal
 // A good way to capture the same behavior is via the immutable from JS method.
 const nestedPoint2 = fromJS({
   x: {
@@ -182,10 +181,9 @@ const nestedPoint2 = fromJS({
   },
 });
 
-
 isValid(nestedPoint2, '2-nested point'); // true
 
-// Note that this uses perusal-immutable
+// Note that this uses perusal
 // This works with normal JS Maps as well.
 const nestedPoint3 = {
   x: {
@@ -218,7 +216,7 @@ console.log(
 );
 /* Test 1: Time taken to perform 10000000 validity checks on the JS Map is 5441.707319021225ms, averaging 0.0005441707319021225ms. */
 
-// This uses perusal-immutable
+// This uses perusal
 // Test 2: fromJS (immutableJS) Map
 start = performance.now();
 for (let i = 0; i < numTimes; i++) {
@@ -236,7 +234,7 @@ console.log(
 );
 /* Test 2: Test 2: Time taken to perform 10000000 validity checks on the fromJS Map is 1474.4121170043945ms, averaging 0.00014744121170043946ms. */
 
-// This uses perusal-immutable
+// This uses perusal
 // Test 3: immutableJS Map
 start = performance.now();
 for (let i = 0; i < numTimes; i++) {

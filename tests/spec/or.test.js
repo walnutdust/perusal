@@ -1,16 +1,19 @@
 import {expect} from 'chai';
-import {or, Spec} from '../../cjs/utils';
-import {even, odd, isNumber, isString} from '../../cjs/preds';
-import {invalid} from '../../cjs/control';
+import {or, isString, Spec, even, odd, isNumber, invalid} from '../../cjs/index';
 import {suspendConsole, restoreConsole} from '../testing-utils';
+import sinon from 'sinon';
 
 describe('or', function() {
   beforeEach(suspendConsole);
   afterEach(restoreConsole);
 
   describe('constructor', function() {
+    it('throws an error on invalid name', function() {
+      expect(() => or(2, even)).to.throw(Error);
+    });
+
     it('throws an error on [non-Spec spec]', function() {
-      expect(() => or('non-Spec')).to.throw(Error);
+      expect(() => or('non-Spec', 'non-Spec')).to.throw(Error);
     });
 
     it('passes with one Spec input', function() {
@@ -34,11 +37,17 @@ describe('or', function() {
 
   describe('explain', function() {
     it('returns true and logs nothing if correct', function() {
+      let spy = sinon.spy(console, 'log');
       expect(or('is string or number?', isNumber, isString).explain(12, [])).to.eq(true);
+      expect(spy.called).to.be.false;
+      spy.restore();
     });
 
     it('returns false and logs error if spec fails', function() {
+      let spy = sinon.spy(console, 'log');
       expect(or('is odd or even?', even, odd).explain('hi', ['path'])).to.eq(false);
+      expect(spy.called).to.be.true;
+      spy.restore();
     });
   });
 });

@@ -14,19 +14,19 @@ export {and, keys, pred, optional, Spec, or};
 var defs = {};
 /**
  * Asserts a spec on a given value. Returns the value if value passes specification,
- * returns `perusal-immutable.invalid` otherwise.
+ * returns `perusal.invalid` otherwise.
  *
  * @param {any} value - The value to be asserted.
  * @param {Spec | string} spec - The spec to be used.
- * @return {invalid|any} Returns the value if value passes specification, returns
- * perusal-immutable.invalid otherwise.
+ * @return {any} Returns the value if value passes specification, returns
+ * perusal.invalid otherwise.
  */
 
 export function assert(value, spec) {
   // getSpec allows us to pass it strings to retrive previously defined specs.
   invariant(
     typeof spec === 'string' || spec instanceof Spec,
-    'Invalid spec '.concat(spec, ' passed to perusal-immutable.assert.')
+    'Invalid spec '.concat(spec, ' passed to perusal.assert.')
   );
   var specification = getSpec(spec); // If the value was previous asserted with this specification, simply return the
   // previous result.
@@ -47,7 +47,7 @@ export function isValid(value, spec) {
   // Error checking/throwing here to provide more helpful error messages.
   invariant(
     typeof spec === 'string' || spec instanceof Spec,
-    'Invalid specification '.concat(spec, ' passed to perusal-immutable.isValid.')
+    'Invalid specification '.concat(spec, ' passed to perusal.isValid.')
   );
   return assert(value, spec) !== invalid;
 }
@@ -61,7 +61,7 @@ export function isValid(value, spec) {
 export function explain(value, spec) {
   invariant(
     typeof spec === 'string' || spec instanceof Spec,
-    'Invalid specification '.concat(spec, ' passed to perusal-immutable.explain.')
+    'Invalid specification '.concat(spec, ' passed to perusal.explain.')
   );
   var specification = getSpec(spec);
 
@@ -88,7 +88,7 @@ export function explain(value, spec) {
 export function explainIfInvalid(value, spec) {
   invariant(
     typeof spec === 'string' || spec instanceof Spec,
-    'Invalid specification '.concat(spec, ' passed to perusal-immutable.explainIfInvalid.')
+    'Invalid specification '.concat(spec, ' passed to perusal.explainIfInvalid.')
   );
   var specification = getSpec(spec);
 
@@ -110,7 +110,7 @@ export function explainIfInvalid(value, spec) {
 export function define(name, spec) {
   invariant(typeof name == 'string', 'Specs can only be defined with string names!');
   invariant(!defs[name], 'Specfication for '.concat(name, ' already exists!'));
-  invariant(spec instanceof Spec, 'perusal-immutable.define called with invalid spec.');
+  invariant(spec instanceof Spec, 'perusal.define called with invalid spec.');
   defs[name] = spec;
 }
 /**

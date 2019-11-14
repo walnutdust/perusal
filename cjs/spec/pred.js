@@ -3,7 +3,8 @@
 Object.defineProperty(exports, '__esModule', {
   value: true,
 });
-exports.pred = exports['default'] = void 0;
+exports.pred = pred;
+exports['default'] = void 0;
 
 var _spec = _interopRequireDefault(require('./spec'));
 
@@ -126,7 +127,7 @@ var Pred =
          * returns `perusal.invalid` otherwise.
          *
          * @param {any} value - The value to be asserted.
-         * @return {invalid|any} Returns the value if value passes spec, returns
+         * @return {any} Returns the value if value passes spec, returns
          * perusal.invalid otherwise.
          * @throws Throws an error if predicate function does not return boolean when
          * fed with input value.
@@ -186,7 +187,7 @@ var Pred =
 
 exports['default'] = Pred;
 
-var pred = function pred(name, fn) {
+function pred(name, fn) {
   (0, _tinyInvariant['default'])(
     fn && typeof fn === 'function',
     'perusal.pred was called with an invalid predicate.'
@@ -195,7 +196,9 @@ var pred = function pred(name, fn) {
     name && typeof name === 'string',
     'perusal.pred was called with an invalid string.'
   );
+  (0, _tinyInvariant['default'])(
+    arguments.length === 2,
+    'perusal.pred was called with invalid number of arguments.'
+  );
   return new Pred(name, fn);
-};
-
-exports.pred = pred;
+}

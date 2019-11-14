@@ -1,7 +1,18 @@
 import {expect} from 'chai';
-import {assert, isValid, explain, explainIfInvalid, define, getSpec, and, Spec} from '../cjs/utils';
-import {even, odd, isNumber} from '../cjs/preds';
-import {invalid} from '../cjs/control';
+import {
+  assert,
+  isValid,
+  explain,
+  explainIfInvalid,
+  define,
+  getSpec,
+  and,
+  Spec,
+  even,
+  odd,
+  isNumber,
+  invalid,
+} from '../cjs/index';
 import {suspendConsole, restoreConsole} from './testing-utils';
 import sinon from 'sinon';
 

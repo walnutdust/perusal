@@ -173,7 +173,7 @@ var Keys =
  * the keys initialized in this spec.
  */
 
-export var keys = function keys(name, specs) {
+export function keys(name, specs) {
   invariant(typeof name === 'string', 'perusal.keys was called with an invalid name.');
   invariant(
     _typeof(specs) === 'object' && Object.keys(specs).length !== 0,
@@ -187,5 +187,6 @@ export var keys = function keys(name, specs) {
     );
   }
 
+  invariant(arguments.length === 2, 'perusal.keys was called with invalid number of arguments.');
   return new Keys(name, specs);
-};
+}

@@ -18,7 +18,7 @@ class Keys extends Spec {
    * @return {invalid|any} Returns the value if value passes spec, returns
    * perusal.invalid otherwise.
    */
-  assert(value: any) {
+  assert(value: any): any {
     if (value.specs && value.specs[this.name] !== undefined) return value.specs[this.name];
     if (!(typeof value === 'object')) return invalid;
 
@@ -41,7 +41,7 @@ class Keys extends Spec {
    * @return {boolean} Returns true if the value satisfies this spec, false
    * otherwise.
    */
-  explain(value: any, path: string[]) {
+  explain(value: any, path: string[]): boolean {
     if (!(typeof value === 'object')) return false;
 
     let result = true;
@@ -66,7 +66,7 @@ class Keys extends Spec {
  * @return {Keys} Returns a `Keys` spec requiring the values of the input to satisfy
  * the keys initialized in this spec.
  */
-export const keys = (name: string, specs: {[key: string]: Spec}) => {
+export function keys(name: string, specs: {[key: string]: Spec}): Keys {
   invariant(typeof name === 'string', 'perusal.keys was called with an invalid name.');
   invariant(
     typeof specs === 'object' && Object.keys(specs).length !== 0,
@@ -80,5 +80,7 @@ export const keys = (name: string, specs: {[key: string]: Spec}) => {
     );
   }
 
+  invariant(arguments.length === 2, 'perusal.keys was called with invalid number of arguments.');
+
   return new Keys(name, specs);
-};
+}

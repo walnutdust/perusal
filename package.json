@@ -1,6 +1,6 @@
 {
   "name": "perusal",
-  "version": "0.0.0beta1.4",
+  "version": "0.0.0beta1.5",
   "description": "perusal seeks to implement a specification system for Javascript.",
   "main": "cjs/index.js",
   "module": "es/index.js",

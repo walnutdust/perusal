@@ -3,7 +3,8 @@
 Object.defineProperty(exports, '__esModule', {
   value: true,
 });
-exports.optional = exports['default'] = void 0;
+exports.optional = optional;
+exports['default'] = void 0;
 
 var _spec = _interopRequireDefault(require('./spec'));
 
@@ -165,12 +166,14 @@ var Optional =
 
 exports['default'] = Optional;
 
-var optional = function optional(spec) {
+function optional(spec) {
   (0, _tinyInvariant['default'])(
     spec instanceof _spec['default'],
     'Invalid specification passed to perusal.optional'
   );
+  (0, _tinyInvariant['default'])(
+    arguments.length === 1,
+    'perusal.optional was called with invalid number of arguments.'
+  );
   return new Optional('optional', spec);
-};
-
-exports.optional = optional;
+}

@@ -3,7 +3,7 @@
 Object.defineProperty(exports, '__esModule', {
   value: true,
 });
-exports.keys = void 0;
+exports.keys = keys;
 
 var _spec = _interopRequireDefault(require('./spec'));
 
@@ -186,7 +186,7 @@ var Keys =
  * the keys initialized in this spec.
  */
 
-var keys = function keys(name, specs) {
+function keys(name, specs) {
   (0, _tinyInvariant['default'])(
     typeof name === 'string',
     'perusal.keys was called with an invalid name.'
@@ -203,7 +203,9 @@ var keys = function keys(name, specs) {
     );
   }
 
+  (0, _tinyInvariant['default'])(
+    arguments.length === 2,
+    'perusal.keys was called with invalid number of arguments.'
+  );
   return new Keys(name, specs);
-};
-
-exports.keys = keys;
+}
